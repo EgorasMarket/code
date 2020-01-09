@@ -83,64 +83,14 @@
             </div>
         </div>
         <div class="col-md-3">
-            <div class="bg-white products-spec">
-                <table class="table text-center">
-                    <thead>
-                        <tr>
-                            <th scope="col">Assets</th>
-                            <th scope="col">Balance</th>
-                            <th scope="col">Send</th>
-                            <th scope="col">Unlock</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="text-center">
-                                <span class="font-weight-bold">GOR</span><br>
-                                <span>USD</span>
-                            </td>
-                            <td class="text-center">
-                                <span class="font-weight-bold">0.000</span><br>
-                                <span>&#36;0.00</span>
-                            </td>
-                            <td class="text-center">
-                                <button type="button" class="btn btn-light"><i class="fas fa-share"></i></button>
-                            </td>
-                            <td class="text-center">
-                                <div class="switchToggle">
-                                    <input type="checkbox" id="switch1">
-                                    <label for="switch1">Toggle</label>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">
-                                <span class="font-weight-bold">EGR</span><br>
-                                <span>USD</span>
-                            </td>
-                            <td class="text-center">
-                                <span class="font-weight-bold">0.000</span><br>
-                                <span>&#36;0.00</span>
-                            </td>
-                            <td class="text-center">
-                                <button type="button" class="btn btn-light"><i class="fas fa-share"></i></button>
-                            </td>
-                            <td class="text-center">
-                                <div class="switchToggle">
-                                    <input type="checkbox" id="switch2">
-                                    <label for="switch2">Toggle</label>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            <?php require "public/page-parts/wallet-balances-single.php"; ?>
             <div class="bg-white my-4">
                 <div class="p-2">
                     <h5>System Info</h5>
-                    <p>EGR PRICE <span class="right"><span class="egrVaultPrice">0.00</span></span></p>
-                    <p>TOTAL EUSD SUPPLY <span class="right"><span class="eusdTotalSupply">0.00</span> EUSD</span></p>
-                    <!-- <p>ACTIVE VAULTS <span class="right">1,504 Vaults</span></p> -->
+                    <p><b>EGR PRICE <span class="right"><span class="egrVaultPrice">0.00</span></span></b></p>
+                    <p><b>IN VAULT <span class="right"><span class="egrInVault">0.00</span> EGR</span></b><small class="text-right egrUSDValue" style="display: block;">0.00$</small></p>
+                    <p><b>TOTAL EUSD SUPPLY <span class="right"><span class="eusdTotalSupply">0.00</span> EUSD</span></b></p>
+                    <p class="text-uppercase"><b>Collateralization Ratio <span class="right ratioValue">0.00%</span></b> </p>
                 </div>
             </div>
             <!-- <div class="bg-white">

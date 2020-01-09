@@ -300,13 +300,19 @@ App = {
 
     App.contracts.EgorasEUSD.methods.totalSupply().call(function (error, totalSupply) {
       // console.log(totalSupply);
-
+      localStorage.setItem("totalSupply", web3.utils.fromWei(totalSupply, "ether"))
       $('.eusdTotalSupply').text(formatNumber(web3.utils.fromWei(totalSupply, "ether")));
     });
 
     App.contracts.EgorasCoin.methods.balanceOf(App.account).call(function (error, balance) {
       $('.accountBalanceEgr').text(formatNumber(web3.utils.fromWei(balance, "ether")));
     });
+
+    App.contracts.EgorasCoin.methods.balanceOf(App.contracts.EgorasVault._address).call(function (error, balance) {
+      $('.egrInVault').text(formatNumber(web3.utils.fromWei(balance, "ether")));
+      localStorage.setItem("EgorasVaultBalance", web3.utils.fromWei(balance, "ether"))
+    });
+
     App.contracts.EgorasVault.methods.getPrice().call(function (error, price) {
       $('.egrVaultPrice').text((web3.utils.fromWei(price, "ether")));
       localStorage.setItem("egrVaultPrice", web3.utils.fromWei(price, "ether"))
@@ -574,6 +580,18 @@ App = {
         App.alerterDanger(text);
       }
     });
+  },
+  ratio: function () {
+    var vaultBal = parseFloat(localStorage.getItem("EgorasVaultBalance"));
+    var totalSupply = parseFloat(localStorage.getItem("totalSupply"));
+    var egrVaultPrice = parseFloat(localStorage.getItem("egrVaultPrice"));
+
+    var ratio = (vaultBal / totalSupply) * 100;
+
+    $(".ratioValue").html(ratio.toFixed(2) + "%")
+    var usdEgrValue = egrVaultPrice * vaultBal;
+    $(".egrUSDValue").html(usdEgrValue.toFixed(2) + "$")
+
   }
 }
 
@@ -616,7 +634,7 @@ function approveVaultBtnTrigger(which) {
 function checkBalance() {
 
   App.displayAccountInfo();
-
+  App.ratio();
 
 }
 
