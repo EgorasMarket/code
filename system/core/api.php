@@ -275,6 +275,33 @@ class Api extends Rest
     }
   }
 
+  public function insert_seller_message()
+  {
+
+
+    $seller =         $this->validate_parameter("seller", $this->param['seller'], STRING);
+    $buyer =          $this->validate_parameter("buyer", $this->param['buyer'], STRING);
+    $message =        $this->validate_parameter("content", $this->param['content'], STRING);
+
+
+
+    $list = new Messages();
+
+    $list->seller       =  $seller;
+    $list->buyer        =  $buyer;
+    $list->message      =  $message;
+
+
+
+    if ($list->save()) {
+
+      $data = ['message' => "successful!"];
+      $this->return_response(SUCCESS_RESPONSE,  $data);
+    } else {
+      $this->throw_error(FAILED_QUERY, "Unknown error occurred.");
+    }
+  }
+
   public function insert_contact_us()
   {
 
@@ -332,6 +359,17 @@ class Api extends Rest
     $this->return_response(SUCCESS_RESPONSE,  $data);
   }
 
+  public function fetch_open_listings_by_brand()
+  {
+    $brand =     $this->validate_parameter("brand", $this->param['brand'], STRING);
+
+    $findAll = fetch_open_phones_by_brand($brand);
+
+    // print_r ($findAll);
+    $data = json_encode($findAll);
+    $this->return_response(SUCCESS_RESPONSE,  $data);
+  }
+
   public function fetch_listings_by_walletId()
   {
     $walletId =     $this->validate_parameter("walletId", $this->param['walletId'], STRING);
@@ -361,6 +399,17 @@ class Api extends Rest
     $data = json_encode($findAll);
     $this->return_response(SUCCESS_RESPONSE,  $findAll);
   }
+
+  public function fetch_sub_category_gadgets()
+  {
+    $sub_category =     $this->validate_parameter("sub_category", $this->param['sub_category'], STRING);
+    $findAll = findGadgetBySubCategory($sub_category);
+
+    // print_r ($findAll);
+    $data = json_encode($findAll);
+    $this->return_response(SUCCESS_RESPONSE,  $findAll);
+  }
+
 
   public function fetch_pending_order()
   {

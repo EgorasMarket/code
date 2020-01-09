@@ -525,6 +525,18 @@ function fetch_open_phones()
 	return $main_result;
 }
 
+function fetch_open_phones_by_brand($brand = "")
+{
+	global $db;
+	// $type = $db->SQLEscape($type);
+	$sql = "SELECT * FROM `gadgets` WHERE `is_lock`=0 AND `brand`='{$brand}' ORDER BY `price` DESC";
+	$rsArray = $db->query($sql);
+
+	$main_result = $db->fetchAll($rsArray);
+
+	return $main_result;
+}
+
 function fetch_phones_by_walletid($walletId = "")
 {
 	global $db;
@@ -660,7 +672,20 @@ function findGadgetByCustodians($value = "")
 	global $db;
 
 	$value = $db->SQLEscape($value);
-	$sql = "SELECT * FROM `gadgets` WHERE `walletId`='{$value}'";
+	$sql = "SELECT * FROM `gadgets` WHERE `walletId`='{$value}' AND `is_lock`=0";
+	$rsArray = $db->query($sql);
+
+	$main_result = $db->fetchAll($rsArray);
+
+	return $main_result;
+}
+
+function findGadgetBySubCategory($value = "")
+{
+	global $db;
+
+	$value = $db->SQLEscape($value);
+	$sql = "SELECT * FROM `gadgets` WHERE `sub_category`='{$value}' AND `is_lock`=0";
 	$rsArray = $db->query($sql);
 
 	$main_result = $db->fetchAll($rsArray);
