@@ -7,44 +7,40 @@
       <div class="row">
         <div class="col-md-3  desktop-side-link" style="background-color: #fff;">
           <div class="col-sm-12">
-            <ul class="list-unstyled components desktop-side-bar-link pt-2">
+            <ul class="list-unstyled components desktop-side-bar-link pt-2 ml-0">
               <li>
-                <a href="/phones">&nbsp;<i class="fas fa-mobile"></i> &nbsp; Phones & Tablets</a>
+                <a href="/unique_brand/apple" class="font-weight-bolder" style="font-size: 14px;"> Apple</a>
               </li>
               <li>
-                <a href="#"><i class="fas fa-laptop"></i> Computing</a>
-              </li>
-
-              <li>
-                <a href="#"><i class="fas fa-tv"></i> Electronics</a>
+                <a href="/unique_brand/samsung" class="font-weight-bolder" style="font-size: 14px;"> Samsung</a>
               </li>
 
               <li>
-                <a href="#"><i class="fas fa-home"></i> Home & Office</a>
+                <a href="/unique_brand/tecno" class="font-weight-bolder" style="font-size: 14px;"> Tecno</a>
               </li>
 
               <li>
-                <a href="#"><i class="fas fa-tshirt"></i> Fashion</a>
+                <a href="/unique_brand/infinix" class="font-weight-bolder" style="font-size: 14px;"> Infinix</a>
               </li>
 
               <li>
-                <a href="#"><i class="fas fa-x-ray"></i> Health & Beauty</a>
+                <a href="/unique_brand/gionee" class="font-weight-bolder" style="font-size: 14px;"> Gionee</a>
               </li>
 
               <li>
-                <a href="#"><i class="fas fa-gamepad"></i> Gaming</a>
+                <a href="/unique_brand/xiaomi" class="font-weight-bolder" style="font-size: 14px;"> Xiaomi</a>
               </li>
 
               <li>
-                <a href="#"><i class="fas fa-baby"></i> Baby Products</a>
+                <a href="/unique_brand/huawai" class="font-weight-bolder" style="font-size: 14px;"> Huawai</a>
               </li>
 
               <li>
-                <a href="#"><i class="fas fa-seedling"></i> Grocery</a>
+                <a href="/unique_brand/itel" class="font-weight-bolder" style="font-size: 14px;"> Itel</a>
               </li>
 
               <li>
-                <a href="#" data-toggle="modal" data-target="#allBrandModal"><i class="fas fa-list"></i> All Brands</a>
+                <a href="#" data-toggle="modal" data-target="#allBrandModal" class="font-weight-bolder" style="font-size: 14px;"><i class="fas fa-list"></i> All Brands</a>
               </li>
 
             </ul>
@@ -68,7 +64,7 @@
                   <img src="/public/static/assets/carousel/head.png" class="img-fluid" alt="...">
                 </div>
                 <div class="carousel-item">
-                  <img src="/public/static/assets/carousel/head.png" class="img-fluid" alt="...">
+                  <img src="/public/static/assets/carousel/egoras-banner.png" class="img-fluid" alt="...">
                 </div>
               </div>
               <!-- <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -88,11 +84,11 @@
     <div class="col-md-3 reset-padding" style="">
       <div class="col-sm-12" style="">
 
-        <img src="/public/static/assets/side/yellow.png" class="img-fluid" style="height: 160.9px; margin-bottom: 20px;">
+        <img src="/public/static/assets/side/orange.png" class="img-fluid" style="height: 160.9px; margin-bottom: 20px;">
 
 
 
-        <img src="/public/static/assets/side/yellow.png" class="img-fluid" style="height: 160.9px; margin-bottom: 20px;">
+        <img src="/public/static/assets/side/yellow2.png" class="img-fluid" style="height: 160.9px; margin-bottom: 20px;">
 
       </div>
     </div>

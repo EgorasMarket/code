@@ -29,8 +29,10 @@
             $pes = $res['response']['data'];
 
             $walletcookie = $pes[0]['walletId'];
+            $sub_category = $pes[0]['sub_category'];
 
             setcookie("custodian", $walletcookie, time() + 13600, "/");
+            setcookie("sub_category", $sub_category, time() + 13600, "/");
 
             // die();
 

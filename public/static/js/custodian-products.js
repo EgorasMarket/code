@@ -1,5 +1,6 @@
 $(document).ready(function () {
- var cus = getCookie('custodian');
+  var cus = getCookie('custodian');
+  // alert('ok')
 
     array_id = {
         "cus_id" : cus
@@ -8,35 +9,30 @@ $(document).ready(function () {
   $.ajax({
     url: "/custodian_products/",
     type: "POST",
-      data:  array_id,
-
-
-
+    data:  array_id,
+    beforeSend: function() {
+      var rowbody = '<div id="loading1" class="col-md-12 col-sm-12"><div class="row align-items-center" style="height:228px;padding:10px;"><img style="height:70%;" src="/public/static/assets/company/ajax-loader.gif" class="img-fluid mx-auto" ></div></div>';
+      $("#custodianproducts").html(rowbody);
+    },
     success: function (response) {
-
+      $("#loading1").hide();
 
       var rs = JSON.parse(response);
 
-      //   let walletID = getCookie("walletId");
-      console.log(rs.response.data);
-      $.each(rs.response.data, function (k, v) {
+      if (rs.response.data.length == 0) {
+        var rowbody = '<div class="col-md-12 col-sm-12"><div style="height:228px;padding:10px;"><div class="row align-items-center"><img style="height:70%;" src="/public/static/assets/company/abbreviation.png" class="img-fluid mx-auto" ></div><h6 class="text-center mt-2 text-muted">No more items from this custodian.</h6></div></div>';
+        $("#categoryproducts").html(rowbody);
+      } else {
+        $.each(rs.response.data, function (k, v) {
 
-        var rowbody = '<div class="col-md-2 col-sm-4"><div class="more-items-img"><img class="mr-2 img-fluid" src="/public/static/phones/'+ v.img +'" width="" alt="Generic placeholder image"><span class="font-weight-bold text-warning">-75%</span></div><div class="custodian-price pb-2"><p class="py-0 p-name">' + v.brand +' '+ v.model +' '+ v.screen_size + '</p><p class="font-weight-bold p-0">&#8358;' + v.price + '</p><p class="clash-price p-0">&#8358; 530,000</p></div></div>';
+          rowbody = '<div class="col-md-2 col-sm-4"><a href="/phone_item/'+ v.slug +'"><div class="more-items-img"><img class="mr-2 img-fluid" src="/public/static/phones/'+ v.img +'" width="" alt="Generic placeholder image"><span class="font-weight-bold text-warning">-75%</span></div><div class="custodian-price pb-2"><p class="py-0 p-name">' + v.brand +' '+ v.model +' '+ v.screen_size + '</p><p class="font-weight-bold p-0">&#8358;' + v.price + '</p><p class="clash-price p-0">&#8358; 530,000</p></div></a></div>';
+            
+          $("#custodianproducts").append(rowbody);
 
-        console.log(v.brand);
+        });
+      }
 
-        $("#custodianproducts").append(rowbody);
-        // var date = v.date_created;
-        // var neet = date.split(" ");
-        // var main = neet[0];
-
-        // if (walletID.toLowerCase() == v.lockBy.toLowerCase()) {
-
-        // }
-
-
-
-      });
+      
 
       if (response.error) {
         //   console.log(data.error.msg);

@@ -1,6 +1,32 @@
 <?php require_once("public/page-parts/site-header.php") ?>
 <?php require_once("public/page-parts/sidebar.php") ?>
 <?php require_once("public/page-parts/navbar.php") ?>
+
+<style>
+.m-design {
+    background-color: #f5f5f5;
+    box-shadow: none;
+    color: #565656;
+    font-family: 'Rubik', sans-serif;
+    font-size: 1rem;
+    line-height: 1.43;
+    /* min-height: 3.5em; */
+    padding-top: 0.375rem;
+    padding-right: 40px;
+    padding-bottom: 0.375rem;
+    padding-left: 0.75rem;
+}
+
+.form-control:focus {
+    box-shadow: none;
+}
+
+.msg_send_btn {
+    right: 5px;
+    top: 55px;
+}
+</style>
+
 <div class="mt-2" id="topBanner">
     <div class="wrapper">
         <div class="breadcrumb-wrapper">
@@ -143,7 +169,7 @@
                                                             </div> -->
                                                             <div class="text-center mb-3">
                                                                 <a href="#" onclick="sellNow()" class="mx-3 btn btn-orange btn-round">Sell Now</a>
-                                                                <a href="/messages/" class="mx-3 btn btn-outline-orange btn-round mt-1">Contact Buyer</a>
+                                                                <a href="#" data-toggle="modal" data-target="#ContactBuyer" class="mx-3 btn btn-outline-orange btn-round mt-1">Contact Buyer</a>
 
 
 
@@ -391,7 +417,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <!-- <div class="col-md-3">
                     <div class="product-small bg-white">
                         <div class="media my-2">
                             <img class="mr-2 img-fluid" src="/public/static/assets/company/phone1.jpg" width="110" alt="Generic placeholder image">
@@ -406,7 +432,7 @@
                         </div>
                     </div>
 
-                </div>
+                </div> -->
             </div>
         </div>
 
@@ -428,73 +454,8 @@
                 <h5>Related Products</h5>
             </div>
             <div class="container">
-                <div class="row">
-                    <div class="col-md-2">
-                        <div class="more-items-img">
-                            <img class="mr-2 img-fluid" src="/public/static/assets/company/phone1.jpg" width="" alt="Generic placeholder image">
-                            <span class="font-weight-bold text-warning">-75%</span>
-                        </div>
-                        <div class="custodian-price pb-2">
-                            <p class="py-0 p-name">Galaxy S9 5.8-inch QHD</p>
-                            <p class="font-weight-bold p-0">&#8358; 320.660</p>
-                            <p class="clash-price p-0">&#8358; 530,000</p>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="more-items-img">
-                            <img class="mr-2 img-fluid" src="/public/static/assets/company/phone1.jpg" width="" alt="Generic placeholder image">
-                            <span class="font-weight-bold text-warning">-75%</span>
-                        </div>
-                        <div class="custodian-price pb-2">
-                            <p class="py-0 p-name">Galaxy S9 5.8-inch QHD</p>
-                            <p class="font-weight-bold p-0">&#8358; 320.660</p>
-                            <p class="clash-price p-0">&#8358; 530,000</p>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="more-items-img">
-                            <img class="mr-2 img-fluid" src="/public/static/assets/company/phone1.jpg" width="" alt="Generic placeholder image">
-                            <span class="font-weight-bold text-warning">-75%</span>
-                        </div>
-                        <div class="custodian-price pb-2">
-                            <p class="py-0 p-name">Galaxy S9 5.8-inch QHD</p>
-                            <p class="font-weight-bold p-0">&#8358; 320.660</p>
-                            <p class="clash-price p-0">&#8358; 530,000</p>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="more-items-img">
-                            <img class="mr-2 img-fluid" src="/public/static/assets/company/phone1.jpg" width="" alt="Generic placeholder image">
-                            <span class="font-weight-bold text-warning">-75%</span>
-                        </div>
-                        <div class="custodian-price pb-2">
-                            <p class="py-0 p-name">Galaxy S9 5.8-inch QHD</p>
-                            <p class="font-weight-bold p-0">&#8358; 320.660</p>
-                            <p class="clash-price p-0">&#8358; 530,000</p>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="more-items-img">
-                            <img class="mr-2 img-fluid" src="/public/static/assets/company/phone1.jpg" width="" alt="Generic placeholder image">
-                            <span class="font-weight-bold text-warning">-75%</span>
-                        </div>
-                        <div class="custodian-price pb-2">
-                            <p class="py-0 p-name">Galaxy S9 5.8-inch QHD</p>
-                            <p class="font-weight-bold p-0">&#8358; 320.660</p>
-                            <p class="clash-price p-0">&#8358; 530,000</p>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="more-items-img">
-                            <img class="mr-2 img-fluid" src="/public/static/assets/company/phone1.jpg" width="" alt="Generic placeholder image">
-                            <span class="font-weight-bold text-warning">-75%</span>
-                        </div>
-                        <div class="custodian-price pb-2">
-                            <p class="py-0 p-name">Galaxy S9 5.8-inch QHD</p>
-                            <p class="font-weight-bold p-0">&#8358; 320.660</p>
-                            <p class="clash-price p-0">&#8358; 530,000</p>
-                        </div>
-                    </div>
+                <div id="categoryproducts" class="row">
+                    
                 </div>
             </div>
         </div>
@@ -502,6 +463,43 @@
     </div>
 </div>
 
+<!-- Contact Buyer Modal -->
+<div class="modal fade" id="ContactBuyer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Message Buyer</h5>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                    <form id="form21">                 
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="type_msg">
+                                    <div class="input_msg_write">
+                                        <input type="hidden" name="seller" value="<?php echo $walletId."&&"; ?>">
+                                        <textarea type="text" name="seller_msg" class="write_msg form-control m-design" placeholder="Type a message"></textarea>
+
+                                        <button class="msg_send_btn" id="submit_msg" type="button"><i class="far fa-paper-plane" aria-hidden="true"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div> -->
+        </div>
+    </div>
+</div>
+
 
 <?php require_once("public/page-parts/site-footer.php") ?>
+<script src="/public/static/js/contact-buyer.js"></script>
 <script src="/public/static/js/custodian-products.js"></script>
+<script src="/public/static/js/category-products.js"></script>
