@@ -62,6 +62,11 @@ App = {
       App.contracts.EgorasCoin.setProvider(App.web3Provider);
     });
 
+    $.getJSON('/public/static/json/Vault.json', function (egorasVaultArtifact) {
+      App.contracts.EgorasVault = new web3.eth.Contract(egorasVaultArtifact.abi, egorasVaultArtifact.contractAddress);
+      App.contracts.EgorasVault.setProvider(App.web3Provider);
+    });
+
   },
 
   getNextClaimDate: function () {
@@ -69,7 +74,80 @@ App = {
       console.log(error + "The Error", result + "The result")
     });
   },
+  GenerateCoin: function () {
 
+    switch (selected) {
+      case "eusd":
+        App.generateEGR();
+        break;
+      case "egr":
+        App.generateEUSD();
+        break;
+      default:
+        break;
+    }
+  },
+  generateEUSD: function () {
+    var input = parseFloat($("#VaultInput").val());
+    App.showModal();
+    if (input > 0) {
+      App.contracts.EgorasCoin.methods.allowance(App.account, App.contracts.EgorasVault._address).call(function (error, allowance) {
+        if (parseFloat(allowance) >= web3.utils.toWei(input.toString())) {
+          App.contracts.EgorasVault.methods.generateEgorasEUSD(web3.utils.toWei(input.toString())).send({
+              from: App.account
+            })
+            .on('transactionHash', function (hash) {
+              var msg = '<p>Transaction completed successfully <br><b><a target="_blank" href="' + App.etherscan + hash + '">Click here to see transaction status</a></b>.</p>';
+              App.alerterSuccesss(msg);
+              $("#openApproveVaultModal").trigger("click");
+            }).on('error', function (err) {
+              var text = '<p>Did not complete successfully </p>';
+              App.alerterDanger(text);
+
+            })
+        } else {
+          // increase allowance
+          var text = '<p>Before you can generate EGR, you need to approve the vault to spend on behalf of you. <br><b><button id="' + selected + '" class="btn btn-warning" onclick="approveVaultBtnTrigger(this.id)">Approve Now</button></b></p>';
+          App.alerterWarning(text);
+        }
+      });
+    } else {
+      var text = '<p>Please enter a valid amount </p>';
+      App.alerterDanger(text);
+    }
+
+
+  },
+  generateEGR: function () {
+    var input = parseFloat($("#VaultInput").val());
+    App.showModal();
+    if (input > 0) {
+      App.contracts.EgorasEUSD.methods.allowance(App.account, App.contracts.EgorasVault._address).call(function (error, allowance) {
+        if (parseFloat(allowance) >= web3.utils.toWei(input.toString())) {
+          App.contracts.EgorasVault.methods.generateEgorasCoin(web3.utils.toWei(input.toString())).send({
+              from: App.account
+            })
+            .on('transactionHash', function (hash) {
+              var msg = '<p>Transaction completed successfully <br><b><a target="_blank" href="' + App.etherscan + hash + '">Click here to see transaction status</a></b>.</p>';
+              App.alerterSuccesss(msg);
+              $("#openApproveVaultModal").trigger("click");
+            }).on('error', function (err) {
+              var text = '<p>Did not complete successfully </p>';
+              App.alerterDanger(text);
+
+            })
+        } else {
+          // increase allowance
+          var text = '<p>Before you can generate EGR, you need to approve the vault to spend on behalf of you. <br><b><button id="' + selected + '" class="btn btn-warning" onclick="approveVaultBtnTrigger(this.id)">Approve Now</button></b></p>';
+          App.alerterWarning(text);
+        }
+      });
+    } else {
+      var text = '<p>Please enter a valid amount </p>';
+      App.alerterDanger(text);
+    }
+
+  },
   addBuyOrder: function (id) {
     App.showModal();
     $.getJSON('/phones/getGadgetBy/' + id, {
@@ -127,6 +205,50 @@ App = {
 
 
   },
+  approveVaultApp: function () {
+    App.showModal();
+    let instance;
+    let coinName;
+    if (isNaN($("#approvalVaultAmount").val()) == false && parseFloat($("#approvalVaultAmount").val()) > 0) {
+      let approvalVaultAmount = web3.utils.toWei(parseFloat($("#approvalVaultAmount").val()).toString());
+      if ($("#whichCoin").val() == "eusd") {
+        instance = App.contracts.EgorasEUSD;
+        coinName = "Egoras EUSD";
+      } else {
+        instance = App.contracts.EgorasCoin;
+        coinName = "Egoras Coin";
+      }
+      instance.methods.balanceOf(App.account).call(function (error, balance) {
+
+
+        if (parseFloat(balance) >= approvalVaultAmount && approvalVaultAmount > 0) {
+
+          instance.methods.approve(App.contracts.EgorasVault._address, approvalVaultAmount).send({
+              from: App.account
+            })
+            .on('transactionHash', function (hash) {
+              var msg = '<p>Transaction completed successfully <br><b><a target="_blank" href="' + App.etherscan + hash + '">Click here to see transaction status</a></b>.</p>';
+              App.alerterSuccesss(msg);
+              $("#openApproveVaultModal").trigger("click");
+            }).on('error', function (err) {
+              var text = '<p>Did not complete successfully </p>';
+              App.alerterDanger(text);
+
+            })
+
+
+        } else {
+          // insuficient balance
+          var text = '<p>Insufficient balance! Please buy <b>more</b> ' + coinName + ' at <b><a target="_blank" href="https://google.com">EtherFlyer</a></b></p>';
+          App.alerterDanger(text);
+        }
+      });
+
+    } else {
+      var text = '<p>You have entered invalid amount</p>';
+      App.alerterDanger(text);
+    }
+  },
   approveApp: function () {
     App.showModal();
     if (isNaN($("#approvalAmount").val()) == false && parseFloat($("#approvalAmount").val()) > 0) {
@@ -176,8 +298,20 @@ App = {
       $('.accountBalanceGor').text(formatNumber(web3.utils.fromWei(balance, "ether")));
     });
 
+    App.contracts.EgorasEUSD.methods.totalSupply().call(function (error, totalSupply) {
+      // console.log(totalSupply);
+
+      $('.eusdTotalSupply').text(formatNumber(web3.utils.fromWei(totalSupply, "ether")));
+    });
+
     App.contracts.EgorasCoin.methods.balanceOf(App.account).call(function (error, balance) {
       $('.accountBalanceEgr').text(formatNumber(web3.utils.fromWei(balance, "ether")));
+    });
+    App.contracts.EgorasVault.methods.getPrice().call(function (error, price) {
+      $('.egrVaultPrice').text((web3.utils.fromWei(price, "ether")));
+      localStorage.setItem("egrVaultPrice", web3.utils.fromWei(price, "ether"))
+
+
     });
 
     App.contracts.EgorasMarket.methods.getIncentives().call(function (error, incentive) {
@@ -419,7 +553,7 @@ App = {
     App.showModal();
 
     App.contracts.EgorasMarket.methods.claimable().call(function (error, claimable) {
-      console.log(claimable);
+
 
       if (!error && claimable == true) {
         App.contracts.EgorasMarket.methods.incentifyCustdians().send({
@@ -470,6 +604,12 @@ $(document).ready(function () {
 
 function approveBtnTrigger() {
   $("#openApproveModal").trigger("click");
+  $("#txtModal").removeClass("show");
+}
+
+function approveVaultBtnTrigger(which) {
+  $("#whichCoin").val(which);
+  $("#openApproveVaultModal").trigger("click");
   $("#txtModal").removeClass("show");
 }
 

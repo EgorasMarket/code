@@ -108,7 +108,35 @@
         </div>
     </div>
 </div>
+<button id="openApproveVaultModal" data-toggle="modal" data-target="#approveVaultModal" style="display: none;">
+</button>
+<!-- Modal -->
+<div class="modal fade" id="approveVaultModal" tabindex="-1" role="dialog" aria-labelledby="approveVaultModalLabel" aria-hidden="true">
+    <div class="modal-center">
+        <div class="modal-dialog .modal-align-center">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="approveVaultModalLabel">Approve</h4>
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span>
 
+                    </button>
+
+
+                </div>
+                <div class="modal-body">
+
+                    <label>Enter amount you want this <b>vault</b> to spend.</label>
+                    <input class="form-control" type="number" id="approvalVaultAmount" placeholder="Enter Amount">
+                    <input type="hidden" id="whichCoin">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-warning" onclick="App.approveVaultApp(); return false;">Approve</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="modal fade" style="background: rgba(0,0,0, 0.8);" id="txtModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <button id="txtModalClose" style="float: right; margin-right: 10px; margin-top: 10px;"><i class="fas fa-times fa-2x text-white"></i></button>
@@ -133,7 +161,9 @@
 
         </div>
     </div>
+
 </div>
+
 
 
 <!-- All State Modal -->
