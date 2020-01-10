@@ -9,16 +9,16 @@ class Submit_message extends Controller {
         $data = array();
 
         if (isset($_COOKIE['walletId'])) {
-            $buyer = $_COOKIE['walletId'];
+            $seller = $_COOKIE['walletId'];
         }
   
-        if (isset($_POST['seller']) && isset($_POST['msg_content'])){
+        if (isset($_POST['buyer']) && isset($_POST['msg_content'])){
 
 
-            $seller = $_POST['seller'];
+            $buyer = $_POST['buyer'];
             $msg_content = $_POST['msg_content'];
 
-            $split = explode("=",$seller);
+            $split = explode("=",$buyer);
             $split2 = explode("=",$msg_content);
 
             $seller_id = $split[1];

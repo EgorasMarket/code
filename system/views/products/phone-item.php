@@ -475,7 +475,14 @@
                     <div class="col-md-12">
                     <form id="form21">                 
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-3">
+                                <div class="py-2" style="background:#f7f7f7;">
+                                    <!-- <img src="/public/static/assets/company/star.png" width="50" style="border-radius:50%" class="img-fluid bg-white" alt=""> -->
+                                    <div class="row align-items-center"><img style="border-radius:50%;" width="50" src="/public/static/assets/company/star.png" class="img-fluid bg-white mx-auto" ></div>
+                                    <p class="text-center text-muted" id="user_name"></p>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
                                 <div class="type_msg">
                                     <div class="input_msg_write">
                                         <input type="hidden" name="seller" value="<?php echo $walletId."&&"; ?>">
@@ -503,3 +510,4 @@
 <script src="/public/static/js/contact-buyer.js"></script>
 <script src="/public/static/js/custodian-products.js"></script>
 <script src="/public/static/js/category-products.js"></script>
+<script src="/public/static/js/buyer-details.js"></script>

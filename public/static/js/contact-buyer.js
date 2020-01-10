@@ -3,11 +3,11 @@ $("#submit_msg").on('click',(function(e) {
     var value = $("#form21").serialize();
     var form_content = value.replace(/%20/g, " ");
     var res = form_content.split("%26%26&");
-    var seller = res[0];
+    var buyer = res[0];
     var msg_content = res[1];
     // var formData = new FormData(this)
     var in_array = {
-        seller,
+        buyer,
         msg_content,
 
     }

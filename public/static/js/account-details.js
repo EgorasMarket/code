@@ -15,13 +15,14 @@ $(document).ready(function () {
       
       
       var main = rs.response.data;
-      console.log(main);
+      // console.log(main);
       
-      var name = main[0].last_name;
+      var last_name = main[0].last_name;
+      var first_name = main[0].first_name;
       var address = main[0].address;
       var state = main[0].state;
 
-      $("#user_name").append("<span>" + name + "</span>");
+      $("#user_name").append("<span>" + last_name + "</span>");
       // $("#address").append("<span>" + address + "</span>");
       // $("#state_o").append("<span>" + state + "</span>");
 
