@@ -176,6 +176,9 @@ class Api extends Rest
 
     $text = $brand . ' ' . $model . ' ' . $screen_size . ' ' . $ram . ' ' . $operating_sys . ' ' . $sim . ' ' . $battery . 'mah ' . $colour . ' ' . rand(1000, 1000000);
 
+    // $full_name = "";
+    $full_name = $brand . ' ' . $model . ' (' . $colour. ', ' . $storage_cap.')';
+
     $slugify = slugify($text);
 
     $slug = $slugify . '.html';
@@ -185,6 +188,7 @@ class Api extends Rest
     $list->walletId             =  $walletId;
     $list->category             =  $category;
     $list->sub_category         =  $sub_category;
+    $list->full_name            =  $full_name;
     $list->brand                =  $brand;
     $list->d_condition          =  $condition;
     $list->storage_capacity     =  $storage_cap;
