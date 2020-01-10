@@ -561,6 +561,30 @@ function fetch_user_info($walletId = "")
 	return $main_result;
 }
 
+function fetch_msg_by_sellerid($walletId = "")
+{
+	global $db;
+	// $type = $db->SQLEscape($type);
+	$sql = "SELECT * FROM `messages` WHERE `seller`='{$walletId}' ORDER BY `date_created` ASC";
+	$rsArray = $db->query($sql);
+
+	$main_result = $db->fetchAll($rsArray);
+
+	return $main_result;
+}
+
+function fetch_msg_by_buyerid($walletId = "")
+{
+	global $db;
+	// $type = $db->SQLEscape($type);
+	$sql = "SELECT * FROM `messages` WHERE `buyer`='{$walletId}' ORDER BY `date_created` ASC";
+	$rsArray = $db->query($sql);
+
+	$main_result = $db->fetchAll($rsArray);
+
+	return $main_result;
+}
+
 function pending_order($walletId = "")
 {
 	global $db;

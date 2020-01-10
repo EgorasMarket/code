@@ -202,15 +202,28 @@ class Api extends Rest
     $list->description          =  $description;
     $list->price                =  $price;
     $list->img                  =  $img1;
-    $list->img2                 =  $img2;
-    $list->img3                 =  $img3;
-    $list->img4                 =  $img4;
-    $list->img5                 =  $img5;
+    
     $list->slug                 =  $slug;
+
+    if ($img2 != "none") {
+      $list->img2                 =  $img2;
+    }
+
+    if ($img3 != "none") {
+      $list->img3                 =  $img3;
+    }
+
+    if ($img4 != "none") {
+      $list->img4                 =  $img4;
+    }
+
+    if ($img5 != "none") {
+      $list->img5                 =  $img5;
+    }
 
     if ($list->save()) {
 
-      $data = ['message' => "Your registration was successful!"];
+      $data = ['message' => "This product has been listed successfully!"];
       $this->return_response(SUCCESS_RESPONSE,  $data);
     } else {
       $this->throw_error(FAILED_QUERY, "Unknown error occurred.");
@@ -374,6 +387,26 @@ class Api extends Rest
   {
     $walletId =     $this->validate_parameter("walletId", $this->param['walletId'], STRING);
     $findAll = fetch_phones_by_walletid($walletId);
+
+    // print_r ($findAll);
+    $data = json_encode($findAll);
+    $this->return_response(SUCCESS_RESPONSE,  $data);
+  }
+
+  public function fetch_seller_message()
+  {
+    $walletId =     $this->validate_parameter("walletId", $this->param['walletId'], STRING);
+    $findAll = fetch_msg_by_sellerid($walletId);
+
+    // print_r ($findAll);
+    $data = json_encode($findAll);
+    $this->return_response(SUCCESS_RESPONSE,  $data);
+  }
+
+  public function fetch_buyer_message()
+  {
+    $walletId =     $this->validate_parameter("walletId", $this->param['walletId'], STRING);
+    $findAll = fetch_msg_by_buyerid($walletId);
 
     // print_r ($findAll);
     $data = json_encode($findAll);
