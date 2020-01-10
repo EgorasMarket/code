@@ -288,43 +288,81 @@ App = {
   displayAccountInfo: function () {
 
 
-    web3.eth.getBalance(App.account, function (err, balance) {
-      if (err === null) {
-        let ether = parseFloat(web3.utils.fromWei(balance, "ether"));
-        $('.accountBalanceEth').text(ether.toFixed(2));
-      }
-    });
-    App.contracts.EgorasEUSD.methods.balanceOf(App.account).call(function (error, balance) {
-      $('.accountBalanceGor').text(formatNumber(web3.utils.fromWei(balance, "ether")));
-    });
+    try {
+      web3.eth.getBalance(App.account, function (err, balance) {
+        if (err === null) {
+          let ether = parseFloat(web3.utils.fromWei(balance, "ether"));
+          $('.accountBalanceEth').text(ether.toFixed(2));
+        }
+      });
+    } catch (error) {
+      console.log(error);
 
-    App.contracts.EgorasEUSD.methods.totalSupply().call(function (error, totalSupply) {
-      // console.log(totalSupply);
-      localStorage.setItem("totalSupply", web3.utils.fromWei(totalSupply, "ether"))
-      $('.eusdTotalSupply').text(formatNumber(web3.utils.fromWei(totalSupply, "ether")));
-    });
-
-    App.contracts.EgorasCoin.methods.balanceOf(App.account).call(function (error, balance) {
-      $('.accountBalanceEgr').text(formatNumber(web3.utils.fromWei(balance, "ether")));
-    });
-
-    App.contracts.EgorasCoin.methods.balanceOf(App.contracts.EgorasVault._address).call(function (error, balance) {
-      $('.egrInVault').text(formatNumber(web3.utils.fromWei(balance, "ether")));
-      localStorage.setItem("EgorasVaultBalance", web3.utils.fromWei(balance, "ether"))
-    });
-
-    App.contracts.EgorasVault.methods.getPrice().call(function (error, price) {
-      $('.egrVaultPrice').text((web3.utils.fromWei(price, "ether")));
-      localStorage.setItem("egrVaultPrice", web3.utils.fromWei(price, "ether"))
+    }
 
 
-    });
+    try {
+      App.contracts.EgorasEUSD.methods.balanceOf(App.account).call(function (error, balance) {
+        $('.accountBalanceGor').text(formatNumber(web3.utils.fromWei(balance, "ether")));
+      });
+    } catch (error) {
+      console.log(error);
 
-    App.contracts.EgorasMarket.methods.getIncentives().call(function (error, incentive) {
+    }
+
+    try {
+      App.contracts.EgorasEUSD.methods.totalSupply().call(function (error, totalSupply) {
+        // console.log(totalSupply);
+        localStorage.setItem("totalSupply", web3.utils.fromWei(totalSupply, "ether"))
+        $('.eusdTotalSupply').text(formatNumber(web3.utils.fromWei(totalSupply, "ether")));
+      });
+    } catch (error) {
+      console.log(error);
+
+    }
+
+    try {
+      App.contracts.EgorasCoin.methods.balanceOf(App.account).call(function (error, balance) {
+        $('.accountBalanceEgr').text(formatNumber(web3.utils.fromWei(balance, "ether")));
+      });
+    } catch (error) {
+      console.log(error);
+
+    }
+
+    try {
+      App.contracts.EgorasCoin.methods.balanceOf(App.contracts.EgorasVault._address).call(function (error, balance) {
+        $('.egrInVault').text(formatNumber(web3.utils.fromWei(balance, "ether")));
+        localStorage.setItem("EgorasVaultBalance", web3.utils.fromWei(balance, "ether"))
+      });
+    } catch (error) {
+      console.log(error);
+
+    }
+
+    try {
+      App.contracts.EgorasVault.methods.getPrice().call(function (error, price) {
+        $('.egrVaultPrice').text((web3.utils.fromWei(price, "ether")));
+        localStorage.setItem("egrVaultPrice", web3.utils.fromWei(price, "ether"))
 
 
-      $('.incentiveFomChains').text(formatNumber(web3.utils.fromWei(incentive._totalIncentive, "ether")));
-    });
+      });
+    } catch (error) {
+      console.log(error);
+
+    }
+
+
+    try {
+      App.contracts.EgorasMarket.methods.getIncentives().call(function (error, incentive) {
+
+
+        $('.incentiveFomChains').text(formatNumber(web3.utils.fromWei(incentive._totalIncentive, "ether")));
+      });
+    } catch (error) {
+      console.log(error);
+
+    }
 
 
   },
