@@ -632,9 +632,19 @@ function approveVaultBtnTrigger(which) {
 }
 
 function checkBalance() {
+  try {
+    App.displayAccountInfo();
 
-  App.displayAccountInfo();
-  App.ratio();
+  } catch (error) {
+    console.log(error);
+
+  }
+  try {
+    App.ratio();
+  } catch (error) {
+    console.log(error);
+
+  }
 
 }
 
