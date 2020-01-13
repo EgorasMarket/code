@@ -278,9 +278,32 @@ function updateGadgets($table = "", $colname = "", $objname = "", $colname2 = ""
 	$sql .= "LIMIT 1";
 
 	if ($db->query($sql)) {
-		return $sql;
+		return true;
 	} else {
-		return $sql;
+		return false;
+	}
+}
+
+function partialBuyOrder($table = "", $updateColName, $updateColData, $condiction, $condictionData, $condiction2, $condictionData2)
+{
+	global $db;
+	$updateColName = $db->SQLEscape($updateColName);
+	$updateColData = $db->SQLEscape($updateColData);
+	$condiction = $db->SQLEscape($condiction);
+	$condictionData = $db->SQLEscape($condictionData);
+	$condiction2 = $db->SQLEscape($condiction2);
+	$condictionData2 = $db->SQLEscape($condictionData2);
+
+	$sql  = "UPDATE {$table}";
+	$sql .= " SET  {$updateColName} = '{$updateColData}' ";
+	$sql .= " WHERE {$condiction} = '{$condictionData}' AND ";
+	$sql .= " {$condiction2} = '{$condictionData2}' ";
+	$sql .= "LIMIT 1";
+
+	if ($db->query($sql)) {
+		return true;
+	} else {
+		return false;
 	}
 }
 
@@ -463,7 +486,7 @@ function SearchForPhones($input = "")
 {
 	global $db;
 
-	$sql = "SELECT * FROM `gadgets` WHERE `brand` LIKE '%{$input}%' OR  `model` LIKE '%{$input}%' OR `operaing_system` LIKE '%{$input}%' AND `is_lock`=0 ORDER BY `price` DESC";
+	$sql = "SELECT * FROM `gadgets` WHERE `full_name` LIKE '%{$input}%' OR `brand` LIKE '%{$input}%' OR  `model` LIKE '%{$input}%' OR `operaing_system` LIKE '%{$input}%' AND `is_lock`=0 ORDER BY `price` DESC";
 	$rsArray = $db->query($sql);
 
 	$main_result = $db->fetchAll($rsArray);
@@ -601,7 +624,7 @@ function order_histroy($walletId = "")
 {
 	global $db;
 	// $type = $db->SQLEscape($type);
-	$sql = "SELECT * FROM `gadgets` WHERE `walletId`='{$walletId}' OR `lockBy` ='{$walletId}' AND `status`='1' OR  `status`='2' ORDER BY `price` DESC";
+	$sql = "SELECT * FROM `gadgets` WHERE `walletId`='{$walletId}' OR `lockBy` ='{$walletId}' AND `is_lock`='1'  ORDER BY `price` DESC";
 	$rsArray = $db->query($sql);
 
 	$main_result = $db->fetchAll($rsArray);
@@ -728,7 +751,7 @@ function findListingBySlug($listing_slug = "")
 	$sql  = "SELECT `gadgets`.*, `user_info`.`address`, `user_info`.`state` AS `lister_state`";
 	$sql .= " FROM `gadgets` JOIN `user_info` ON `gadgets`.`walletId`=`user_info`.`walletId`";
 	$sql .= " WHERE `slug`='{$listing_slug}' LIMIT 1";
-	
+
 	$rsArray = $db->query($sql);
 
 	$main_result = $db->fetchAll($rsArray);

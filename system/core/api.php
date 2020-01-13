@@ -177,7 +177,7 @@ class Api extends Rest
     $text = $brand . ' ' . $model . ' ' . $screen_size . ' ' . $ram . ' ' . $operating_sys . ' ' . $sim . ' ' . $battery . 'mah ' . $colour . ' ' . rand(1000, 1000000);
 
     // $full_name = "";
-    $full_name = $brand . ' ' . $model . ' (' . $colour. ', ' . $storage_cap.')';
+    $full_name = $brand . ' ' . $model . ' (' . $colour . ', ' . $storage_cap . ')';
 
     $slugify = slugify($text);
 
@@ -206,7 +206,7 @@ class Api extends Rest
     $list->description          =  $description;
     $list->price                =  $price;
     $list->img                  =  $img1;
-    
+
     $list->slug                 =  $slug;
 
     if ($img2 != "none") {
@@ -489,7 +489,7 @@ class Api extends Rest
     $this->return_response(SUCCESS_RESPONSE,  $findAll);
   }
 
- 
+
 
   public function partiallySellItem()
   {
@@ -498,7 +498,23 @@ class Api extends Rest
     $result = updateGadgets("gadgets", "is_lock", 1, "status", 2, "lockBy", $wallet, "tokon_id", $token_id);
     if ($result == true) {
 
-      $data = ['message' => "Updated was successful!"];
+      $data = ['message' => "Update was successful!"];
+      $this->return_response(SUCCESS_RESPONSE,  $data);
+    } else {
+      $this->throw_error(FAILED_QUERY, "Unknown error occurred.");
+    }
+  }
+
+  public function partiallysetBuyOrder()
+  {
+    $id =  $this->validate_parameter("id", $this->param['id'], INTEGER);
+    $wallet =  $this->validate_parameter("wallet", $this->param['wallet'], STRING);
+
+    $result = partialBuyOrder("gadgets", "partiallyAdded", 1, "id", $id, "walletId",  $wallet);
+
+    if ($result == true) {
+
+      $data = ['message' => "Update was successful!"];
       $this->return_response(SUCCESS_RESPONSE,  $data);
     } else {
       $this->throw_error(FAILED_QUERY, "Unknown error occurred.");
