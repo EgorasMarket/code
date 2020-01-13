@@ -35,9 +35,9 @@
                 <a href="/unique_brand/huawai" class="font-weight-bolder" style="font-size: 14px;"> Huawai</a>
               </li>
 
-              <li>
+              <!-- <li>
                 <a href="/unique_brand/itel" class="font-weight-bolder" style="font-size: 14px;"> Itel</a>
-              </li>
+              </li> -->
 
               <li>
                 <a href="#" data-toggle="modal" data-target="#allBrandModal" class="font-weight-bolder" style="font-size: 14px;"><i class="fas fa-list"></i> All Brands</a>
@@ -119,49 +119,8 @@
       </div>
 
       <div class="col-md-9">
-        <div class="row">
-          <div class="col-md-3 reset-padding">
-            <div class="product-item">
-              <h4>Computer Hardware</h4>
-              <img class="zoom-in" src="/public/static/assets/side-cover/3.jpg">
-            </div>
-            <div class="product-item">
-              <h4>Computer Hardware</h4>
-              <img class="zoom-in" src="/public/static/assets/side-cover/2.jpg">
-            </div>
-          </div>
-
-          <div class="col-md-3 reset-padding">
-            <div class="product-item">
-              <h4>Computer Hardware</h4>
-              <img class="zoom-in" src="/public/static/assets/side-cover/3.jpg">
-            </div>
-            <div class="product-item">
-              <h4>Computer Hardware</h4>
-              <img class="zoom-in" src="/public/static/assets/side-cover/2.jpg">
-            </div>
-          </div>
-
-          <div class="col-md-3 reset-padding">
-            <div class="product-item">
-              <h4>Computer Hardware</h4>
-              <img class="zoom-in" src="/public/static/assets/side-cover/3.jpg">
-            </div>
-            <div class="product-item">
-              <h4>Computer Hardware</h4>
-              <img class="zoom-in" src="/public/static/assets/side-cover/2.jpg">
-            </div>
-          </div>
-          <div class="col-md-3 reset-padding">
-            <div class="product-item">
-              <h4>Computer Hardware</h4>
-              <img class="zoom-in" src="/public/static/assets/side-cover/3.jpg">
-            </div>
-            <div class="product-item">
-              <h4>Computer Hardware</h4>
-              <img class="zoom-in" src="/public/static/assets/side-cover/2.jpg">
-            </div>
-          </div>
+        <div class="row" id="iphonemodels">
+          
         </div>
       </div>
     </div>
@@ -188,49 +147,8 @@
       </div>
 
       <div class="col-md-9">
-        <div class="row">
-          <div class="col-md-3 reset-padding">
-            <div class="product-item">
-              <h4>Computer Hardware</h4>
-              <img class="zoom-in" src="/public/static/assets/side-cover/3.jpg">
-            </div>
-            <div class="product-item">
-              <h4>Computer Hardware</h4>
-              <img class="zoom-in" src="/public/static/assets/side-cover/2.jpg">
-            </div>
-          </div>
-
-          <div class="col-md-3 reset-padding">
-            <div class="product-item">
-              <h4>Computer Hardware</h4>
-              <img class="zoom-in" src="/public/static/assets/side-cover/3.jpg">
-            </div>
-            <div class="product-item">
-              <h4>Computer Hardware</h4>
-              <img class="zoom-in" src="/public/static/assets/side-cover/2.jpg">
-            </div>
-          </div>
-
-          <div class="col-md-3 reset-padding">
-            <div class="product-item">
-              <h4>Computer Hardware</h4>
-              <img class="zoom-in" src="/public/static/assets/side-cover/3.jpg">
-            </div>
-            <div class="product-item">
-              <h4>Computer Hardware</h4>
-              <img class="zoom-in" src="/public/static/assets/side-cover/2.jpg">
-            </div>
-          </div>
-          <div class="col-md-3 reset-padding">
-            <div class="product-item">
-              <h4>Computer Hardware</h4>
-              <img class="zoom-in" src="/public/static/assets/side-cover/3.jpg">
-            </div>
-            <div class="product-item">
-              <h4>Computer Hardware</h4>
-              <img class="zoom-in" src="/public/static/assets/side-cover/2.jpg">
-            </div>
-          </div>
+        <div class="row" id="samsungmodels">
+          
         </div>
       </div>
     </div>
@@ -257,49 +175,8 @@
       </div>
 
       <div class="col-md-9">
-        <div class="row">
-          <div class="col-md-3 reset-padding">
-            <div class="product-item">
-              <h4>Computer Hardware</h4>
-              <img class="zoom-in" src="/public/static/assets/side-cover/3.jpg">
-            </div>
-            <div class="product-item">
-              <h4>Computer Hardware</h4>
-              <img class="zoom-in" src="/public/static/assets/side-cover/2.jpg">
-            </div>
-          </div>
-
-          <div class="col-md-3 reset-padding">
-            <div class="product-item">
-              <h4>Computer Hardware</h4>
-              <img class="zoom-in" src="/public/static/assets/side-cover/3.jpg">
-            </div>
-            <div class="product-item">
-              <h4>Computer Hardware</h4>
-              <img class="zoom-in" src="/public/static/assets/side-cover/2.jpg">
-            </div>
-          </div>
-
-          <div class="col-md-3 reset-padding">
-            <div class="product-item">
-              <h4>Computer Hardware</h4>
-              <img class="zoom-in" src="/public/static/assets/side-cover/3.jpg">
-            </div>
-            <div class="product-item">
-              <h4>Computer Hardware</h4>
-              <img class="zoom-in" src="/public/static/assets/side-cover/2.jpg">
-            </div>
-          </div>
-          <div class="col-md-3 reset-padding">
-            <div class="product-item">
-              <h4>Computer Hardware</h4>
-              <img class="zoom-in" src="/public/static/assets/side-cover/3.jpg">
-            </div>
-            <div class="product-item">
-              <h4>Computer Hardware</h4>
-              <img class="zoom-in" src="/public/static/assets/side-cover/2.jpg">
-            </div>
-          </div>
+        <div class="row" id="tecnomodels">
+          
         </div>
       </div>
     </div>
@@ -378,3 +255,6 @@
   </div>
 </div>
 <?php require_once("public/page-parts/site-footer.php") ?>
+<script src="/public/static/js/iphone.js"></script>
+<script src="/public/static/js/samsung.js"></script>
+<script src="/public/static/js/tecno.js"></script>

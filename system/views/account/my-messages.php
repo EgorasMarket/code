@@ -41,82 +41,55 @@
                 </span> </div>
             </div>
           </div>
-          <div class="inbox_chat">
-            <div class="chat_list active_chat">
-              <div class="chat_people">
-                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-                <div class="chat_ib">
-                  <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-                  <p>Test, which is a new approach to have all solutions 
-                    astrology under one roof.</p>
-                </div>
+          <div class="inbox_chat" id="chatnotification">
+          <?php
+          $rs = json_decode($data['response']['data'], true);
+
+          if ($rs == NULL) {
+          ?>
+          <?php
+          } else {
+            foreach ($rs as $key => $value) {
+              $product_slug = $value['product_slug'];
+              $message = $value['message'];
+              $date_created = $value['date_created'];
+              $length = 30;
+              
+              if(strlen($product_slug)>=$length)
+              {
+                $slug=substr($product_slug,0,$length) . '...';
+                // echo $product_slug;
+              } else {
+                $slug = $product_slug;
+              }
+
+
+          ?>
+            <a href="/unique_message/<?php echo $product_slug ?>">
+              <div class="chat_list">
+                  <div class="chat_people">
+                      <div class="chat_img"> 
+                          <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> 
+                      </div>
+                      <div class="chat_ib">
+                          <h5><?php echo $slug ?><span class="chat_date"><?php echo $date_created ?></span></h5>
+                          <p><?php echo $message ?></p>
+                      </div>
+                  </div>
               </div>
-            </div>
-            <div class="chat_list">
-              <div class="chat_people">
-                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-                <div class="chat_ib">
-                  <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-                  <p>Test, which is a new approach to have all solutions 
-                    astrology under one roof.</p>
-                </div>
-              </div>
-            </div>
-            <div class="chat_list">
-              <div class="chat_people">
-                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-                <div class="chat_ib">
-                  <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-                  <p>Test, which is a new approach to have all solutions 
-                    astrology under one roof.</p>
-                </div>
-              </div>
-            </div>
-            <div class="chat_list">
-              <div class="chat_people">
-                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-                <div class="chat_ib">
-                  <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-                  <p>Test, which is a new approach to have all solutions 
-                    astrology under one roof.</p>
-                </div>
-              </div>
-            </div>
-            <div class="chat_list">
-              <div class="chat_people">
-                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-                <div class="chat_ib">
-                  <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-                  <p>Test, which is a new approach to have all solutions 
-                    astrology under one roof.</p>
-                </div>
-              </div>
-            </div>
-            <div class="chat_list">
-              <div class="chat_people">
-                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-                <div class="chat_ib">
-                  <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-                  <p>Test, which is a new approach to have all solutions 
-                    astrology under one roof.</p>
-                </div>
-              </div>
-            </div>
-            <div class="chat_list">
-              <div class="chat_people">
-                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-                <div class="chat_ib">
-                  <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-                  <p>Test, which is a new approach to have all solutions 
-                    astrology under one roof.</p>
-                </div>
-              </div>
-            </div>
+          </a>
+
+          <?php
+
+            }
+          }
+          ?>
+            
           </div>
         </div>
-        <div class="mesgs">
-          <div class="msg_history">
-            <!-- <div class="incoming_msg">
+        <!-- <div class="mesgs">
+          <div class="msg_history list">
+            <div class="30/12/2019">
               <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
               <div class="received_msg">
                 <div class="received_withd_msg">
@@ -125,26 +98,26 @@
                   <span class="time_date"> 11:01 AM    |    June 9</span></div>
               </div>
             </div>
-            <div class="outgoing_msg">
+            <div class="21/12/2019" style="margin: 26px 0 26px;overflow:hidden;">
               <div class="sent_msg">
                 <p>Test which is a new approach to have all
                   solutions</p>
                 <span class="time_date"> 11:01 AM    |    June 9</span> </div>
             </div>
-            <div class="incoming_msg">
+            <div class="29/12/2019">
               <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
               <div class="received_msg">
                 <div class="received_withd_msg">
                   <p>Test, which is a new approach to have</p>
                   <span class="time_date"> 11:01 AM    |    Yesterday</span></div>
               </div>
-            </div> -->
-            <div class="outgoing_msg">
+            </div>
+            <div class="31/12/2019" style="margin: 26px 0 26px;overflow:hidden;">
               <div class="sent_msg">
                 <p>Apollo University, Delhi, India Test</p>
                 <span class="time_date"> 11:01 AM    |    Today</span> </div>
             </div>
-            <!-- <div class="incoming_msg">
+            <div class="16/12/2019">
               <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
               <div class="received_msg">
                 <div class="received_withd_msg">
@@ -153,7 +126,7 @@
                     products, at a price anyone can afford.</p>
                   <span class="time_date"> 11:01 AM    |    Today</span></div>
               </div>
-            </div> -->
+            </div>
           </div>
           <div class="type_msg">
             <div class="input_msg_write">
@@ -161,7 +134,7 @@
               <button class="msg_send_btn" type="button"><i class="far fa-paper-plane" aria-hidden="true"></i></button>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
       
       
@@ -176,3 +149,4 @@
 
   
 <?php require_once("public/page-parts/site-footer.php") ?>
+<script src="/public/static/js/sort-messages.js"></script>

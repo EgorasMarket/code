@@ -1,10 +1,11 @@
-$("#form21").on('submit',(function(e) {
+$("#reply-message").on('submit',(function(e) {
     e.preventDefault();
-    App.showModal();
+    // App.showModal();
     var formData = new FormData(this)
+    // alert('ok');
 
     $.ajax({
-        url: "/submit_message/",
+        url: "/submit_message/reply",
         type: "POST",
         data:  formData,
         contentType: false,
@@ -19,7 +20,7 @@ $("#form21").on('submit',(function(e) {
 
             if(data.error){
                 var error = data.error.msg;
-                App.alerterWarning(error); 
+                // App.alerterWarning(error); 
 
                 // function explode(){
                 //     $("#success-msg").hide();
@@ -30,9 +31,10 @@ $("#form21").on('submit',(function(e) {
 
             }else if(data.success){
                 var error = data.success.msg;
-                App.alerterSuccesss(error);
-                
-                $("#form21")[0].reset();
+                // App.alerterSuccesss(error);
+                var bla = $('#message1').val();
+                alert(bla);
+                // $("#reply-message")[0].reset();
 
                 function explode(){
                     $("#txtModalClose").trigger("click");

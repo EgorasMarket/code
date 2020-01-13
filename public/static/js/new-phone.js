@@ -1,16 +1,17 @@
-$("#form").on('submit',(function(e) {
+$("#addphone").on('click',(function(e) {
     e.preventDefault();
-    var formData = new FormData(this)
+    
+    var value = $("#newphone").serialize();
     App.showModal();
-    // var value = $("#form").serialize();
+    
     // console.log(formData);
     $.ajax({
-        url: "/new_model/",
+        url: "/new_phone/",
         type: "POST",
-        data:  formData,
-        contentType: false,
-            cache: false,
-        processData:false,
+        data:  value,
+        // contentType: false,
+        //     cache: false,
+        // processData:false,
         
         success: function(response) {
             
@@ -20,12 +21,13 @@ $("#form").on('submit',(function(e) {
 
             if(data.error){
                 var error = data.error.msg;
-                App.alerterWarning(error);
+                App.alerterWarning(error); 
+                
 
             }else if(data.success){
                 var error = data.success.msg;
                 App.alerterSuccesss(error);
-                $("#form")[0].reset();
+                $("#newphone")[0].reset();
                 
                 
             }	

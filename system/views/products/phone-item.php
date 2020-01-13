@@ -73,11 +73,27 @@
         $battery = $data[0]['battery'];
         $description = $data[0]['description'];
         $price = $data[0]['price'];
+        $slug = $data[0]['slug'];
         $img = $data[0]['img'];
-        $img2 = $data[0]['img2'];
-        $img3 = $data[0]['img3'];
-        $img4 = $data[0]['img4'];
-        $img5 = $data[0]['img5'];
+        $img2 = "";
+        $img3 = "";
+        $img4 = "";
+        $img5 = "";
+
+        $stlLink = "/public/static/phones/";
+        
+        if(!empty($data['img2'])){
+            $img2 =  $stlLink.$data[0]['img2'];
+        }
+        if(!empty($data['img3'])){
+            $img3 =  $stlLink.$data[0]['img3'];
+        }
+        if(!empty($data['img4'])){
+            $img4 =  $stlLink.$data[0]['img4'];
+        }
+        if(!empty($data['img5'])){
+            $img5 =  $stlLink.$data[0]['img5'];
+        }
 
 
         // Samsung Galaxy S9 5.8-inch QHD (4GB, 64GB ROM) Android 8.0 Oreo, 12MP + 8MP single SIM 4G smartphone - Midnight Black
@@ -100,17 +116,17 @@
                                             <a class="product-single__thumbnail active" href="/public/static/phones/<?php echo $img; ?>" data-image="/public/static/phones/<?php echo $img; ?>" data-zoom-image="/public/static/phones/<?php echo $img; ?>" data-image-id="6995357106246">
                                                 <img src="/public/static/phones/<?php echo $img; ?>" alt=""></a>
 
-                                            <a class="product-single__thumbnail active" href="/public/static/phones/<?php echo $img2; ?>" data-image="/public/static/phones/<?php echo $img2; ?>" data-zoom-image="/public/static/phones/<?php echo $img2; ?>" data-image-id="6995357106246">
-                                                <img src="/public/static/phones/<?php echo $img2; ?>" alt=""></a>
+                                            <a class="product-single__thumbnail active" href="<?php echo $img2; ?>" data-image="<?php echo $img2; ?>" data-zoom-image="<?php echo $img2; ?>" data-image-id="6995357106246">
+                                                <img src="<?php echo $img2; ?>" alt=""></a>
 
-                                            <a class="product-single__thumbnail active" href="/public/static/phones/<?php echo $img3; ?>" data-image="/public/static/phones/<?php echo $img3; ?>" data-zoom-image="/public/static/phones/<?php echo $img3; ?>" data-image-id="6995357106246">
-                                                <img src="/public/static/phones/<?php echo $img3; ?>" alt=""></a>
+                                            <a class="product-single__thumbnail active" href="<?php echo $img3; ?>" data-image="<?php echo $img3; ?>" data-zoom-image="<?php echo $img3; ?>" data-image-id="6995357106246">
+                                                <img src="<?php echo $img3; ?>" alt=""></a>
 
-                                            <a class="product-single__thumbnail active" href="/public/static/phones/<?php echo $img4; ?>" data-image="/public/static/phones/<?php echo $img4; ?>" data-zoom-image="/public/static/phones/<?php echo $img4; ?>" data-image-id="6995357106246">
-                                                <img src="/public/static/phones/<?php echo $img4; ?>" alt=""></a>
+                                            <a class="product-single__thumbnail active" href="<?php echo $img4; ?>" data-image="<?php echo $img4; ?>" data-zoom-image="<?php echo $img4; ?>" data-image-id="6995357106246">
+                                                <img src="<?php echo $img4; ?>" alt=""></a>
 
-                                            <a class="product-single__thumbnail active" href="/public/static/phones/<?php echo $img5; ?>" data-image="/public/static/phones/<?php echo $img5; ?>" data-zoom-image="/public/static/phones/<?php echo $img5; ?>" data-image-id="6995357106246">
-                                                <img src="/public/static/phones/<?php echo $img5; ?>" alt=""></a>
+                                            <a class="product-single__thumbnail active" href="<?php echo $img5; ?>" data-image="<?php echo $img5; ?>" data-zoom-image="<?php echo $img5; ?>" data-image-id="6995357106246">
+                                                <img src="<?php echo $img5; ?>" alt=""></a>
 
 
 
@@ -469,6 +485,9 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Message Buyer</h5>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span>
+
+                    </button>
             </div>
             <div class="modal-body">
                 <div class="row">
@@ -485,10 +504,11 @@
                             <div class="col-md-9">
                                 <div class="type_msg">
                                     <div class="input_msg_write">
-                                        <input type="hidden" name="seller" value="<?php echo $walletId."&&"; ?>">
+                                        <input type="hidden" name="buyer" value="<?php echo $walletId; ?>">
+                                        <input type="hidden" name="slug" value="<?php echo $slug; ?>">
                                         <textarea type="text" name="seller_msg" class="write_msg form-control m-design" placeholder="Type a message"></textarea>
 
-                                        <button class="msg_send_btn" id="submit_msg" type="button"><i class="far fa-paper-plane" aria-hidden="true"></i></button>
+                                        <button class="msg_send_btn" id="submit_msg" type="submit"><i class="far fa-paper-plane" aria-hidden="true"></i></button>
                                     </div>
                                 </div>
                             </div>
