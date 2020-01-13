@@ -45,6 +45,25 @@ class Sell_now extends Controller
         $response = curl_without_auth($form_data);
         echo  $response;
     }
+    //
+
+    public function partialBuy($id = "")
+    {
+        $param = new stdClass();
+        $object = new stdClass();
+
+        $param->id = $id;
+        $param->wallet = $_COOKIE['walletId'];
+
+
+        $object->name = "partiallysetBuyOrder";
+        $object->param = $param;
+
+        $form_data  = json_encode($object);
+        $response = curl_without_auth($form_data);
+        echo  $response;
+    }
+
 
     public function finalize($token_id = "")
     {

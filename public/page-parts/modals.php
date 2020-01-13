@@ -306,13 +306,13 @@
 <!-- All Brand Modal -->
 <div class="modal fade" id="connectWalletModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog wallet-modal" role="document">
-        <div class="modal-content" style="min-width: 295px">
+        <div class="modal-content">
             <div class="modal-header" style="border-bottom:none">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" style="min-width: 300px; background: white;">
 
                 <div class="text-center">
                     <img src="/public/static/assets/company/egoras-face.png" width="70" alt="Logo" srcset="" class="img-fluid wallet-logo">
@@ -326,7 +326,7 @@
                 <div id="loginBtns">
                     <div class="row mt-5">
                         <div class="col-md-12">
-                            <button style="width: 100%; outline: none;" id="Fortmatic" onclick="enableWalletProvider(this.id)">
+                            <button style="width: 100%; outline: none;" id="Fortmatic" onclick="enableWalletProviderFromModal(this.id)">
                                 <div class="media mx-4">
                                     <img src="/public/static/assets/logos/fortmatic.png" width="50" alt="Logo" srcset="" class="img-fluid left">
                                     <div class="media-body">
@@ -336,7 +336,7 @@
                                 </div>
                             </button>
                             <h6 class="text-center">OR</h6>
-                            <button style="width: 100%; outline: none;" id="Metamask" onclick="enableWalletProvider(this.id)">
+                            <button style="width: 100%; outline: none;" id="Metamask" onclick="enableWalletProviderFromModal(this.id)">
                                 <div class="media mx-4">
                                     <img src="/public/static/assets/company/metamask.png" width="50" alt="Logo" srcset="" class="img-fluid left">
                                     <div class="media-body">

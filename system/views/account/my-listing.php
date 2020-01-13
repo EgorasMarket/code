@@ -57,6 +57,7 @@
                         <ul class="list-group m-0">
 
                             <?php
+
                             $rs = json_decode($data['response']['data'], true);
 
                             // echo "<pre>";
@@ -86,6 +87,9 @@
                                 $img = $value['img'];
                                 $slug = $value['slug'];
                                 $price = $value['price'];
+                                $partiallyAdded = $value['partiallyAdded'];
+
+
 
                                 $phone_name = $brand . " " . $model;
 
@@ -104,19 +108,37 @@
                                             <div class="d-flex align-items-center justify-content-between mt-1">
                                                 <!-- <h6 class="font-weight-bold my-2">&#8358;64,999</h6> -->
                                             </div>
-                                            <div class="">
-                                                <!-- <p class="p-0 font-weight-bold d-inline">Ikeja, Today</p> -->
-                                                <button type="button" id="<?php echo $id; ?>" onclick="App.cancelBuyOrder(this.id)" class="btn btn-light ml-1 right"><i class="fas fa-edit"></i> Cancel</button>
+                                            <div id="btn-wrapper<?php echo $id ?>">
+
+
                                                 <?php
-                                                if ($is_added === "0") {
+                                                if ($partiallyAdded == "1") {
+                                                ?>
+                                                    <div class="alert alert-warning" role="alert">
+                                                        Awaiting confirmation
+                                                    </div>
+                                                <?php
+                                                } else {
+
 
                                                 ?>
+                                                    <div class="">
+                                                        <!-- <p class="p-0 font-weight-bold d-inline">Ikeja, Today</p> -->
+                                                        <button type="button" id="<?php echo $id; ?>" onclick="App.cancelBuyOrder(this.id)" class="btn btn-light ml-1 right"><i class="fas fa-edit"></i> Cancel</button>
+                                                        <?php
+                                                        if ($is_added === "0") {
 
-                                                    <button type="button" id="<?php echo $id; ?>" onclick="App.addBuyOrder(this.id); return false;" class="btn btn-light right"><i class="fas fa-plus"></i> Add</button>
+                                                        ?>
+
+                                                            <button type="button" id="<?php echo $id; ?>" onclick="App.addBuyOrder(this.id); return false;" class="btn btn-light right"><i class="fas fa-plus"></i> Add</button>
+                                                        <?php
+                                                        }
+                                                        ?>
+
+                                                    </div>
                                                 <?php
                                                 }
                                                 ?>
-
                                             </div>
                                         </div>
                                     </div>

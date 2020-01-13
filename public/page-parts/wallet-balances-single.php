@@ -11,7 +11,7 @@
         <tbody>
             <tr>
                 <td class="text-center">
-                    <span class="font-weight-bold">GOR</span><br>
+                    <span class="font-weight-bold">EUSD</span><br>
                     <span>USD</span>
                 </td>
                 <td class="text-center">

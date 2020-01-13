@@ -3,12 +3,12 @@ App = {
   contracts: {},
   account: 0x0,
   etherscan: "https://rinkeby.etherscan.io/tx/",
-  init: function () {
+  init: function (reload) {
 
-    return App.initWeb3();
+    return App.initWeb3(reload);
   },
 
-  initWeb3: function () {
+  initWeb3: function (reload) {
     if (getCookie("login-type") == "Metamask") {
       if (typeof web3 !== "undefined") {
         // Use Mist/MetaMask's provider.
@@ -30,13 +30,23 @@ App = {
           if (error) throw error;
           setCookie("walletId", coinbase, 2);
           App.account = coinbase;
-          if ($("#connectWalletModal").hasClass("show")) {
-            $("#connectWalletModalbtn").trigger("click");
-            $("#loginBtns").show();
-            $("#spinnerLoader").hide();
-          }
+
+
         });
         App.initContract();
+        if (reload) {
+
+          setTimeout(function () {
+
+            location.reload();
+            if ($("#connectWalletModal").hasClass("show")) {
+              $("#connectWalletModalbtn").trigger("click");
+              $("#loginBtns").show();
+              $("#spinnerLoader").hide();
+
+            }
+          }, 1000);
+        }
       })
       .catch(function (reason) {
         // Handle error. Likely the user rejected the login:
@@ -49,12 +59,12 @@ App = {
 
   initContract: function () {
 
-    $.getJSON('/public/static/json/EgorasMarket.json', function (egorasMarketArtifact) {
+    $.getJSON('/public/static/json/EgorasMarket.json?v=0.0.1', function (egorasMarketArtifact) {
       App.contracts.EgorasMarket = new web3.eth.Contract(egorasMarketArtifact.abi, egorasMarketArtifact.contractAddress);
       App.contracts.EgorasMarket.setProvider(App.web3Provider);
     });
 
-    $.getJSON('/public/static/json/GenericAbi.json', function (GenericArtifact) {
+    $.getJSON('/public/static/json/GenericAbi.json?v=0.0.1', function (GenericArtifact) {
       App.contracts.EgorasEUSD = new web3.eth.Contract(GenericArtifact.abi, GenericArtifact.egorasEUSDAddress);
       App.contracts.EgorasEUSD.setProvider(App.web3Provider);
 
@@ -62,7 +72,7 @@ App = {
       App.contracts.EgorasCoin.setProvider(App.web3Provider);
     });
 
-    $.getJSON('/public/static/json/Vault.json', function (egorasVaultArtifact) {
+    $.getJSON('/public/static/json/Vault.json?v=0.0.1', function (egorasVaultArtifact) {
       App.contracts.EgorasVault = new web3.eth.Contract(egorasVaultArtifact.abi, egorasVaultArtifact.contractAddress);
       App.contracts.EgorasVault.setProvider(App.web3Provider);
     });
@@ -178,8 +188,16 @@ App = {
                     })
                     .on('transactionHash', function (hash) {
                       if (hash !== null) {
-                        var text = '<p>Transaction completed successfully <br><b><a target="_blank" href="' + App.etherscan + hash + '">Click here to see transaction status</a></b>. Your product will be available to whole world in few hours/minutes </p>';
-                        App.alerterSuccesss(text);
+
+                        $.get("/sell_now/partialBuy/" + rs.id, function (data, status) {
+                          var text = '<p>Transaction completed successfully <br><b><a target="_blank" href="' + App.etherscan + hash + '">Click here to see transaction status</a></b>. Your product will be available to whole world in few hours/minutes </p>';
+                          App.alerterSuccesss(text);
+                          var wait = '<div class="alert alert-warning" role="alert">Awaiting confirmation</div>';
+                          $("#btn-wrapper" + rs.id).html(wait)
+
+                        });
+
+
                       }
 
                     }).on('error', function (err) {
@@ -187,6 +205,8 @@ App = {
                       var text = '<p>Did not complete successfully </p>';
                       App.alerterDanger(text);
                     })
+
+
                 } else {
                   //token already added
                 }
@@ -779,5 +799,13 @@ function enableWalletProvider(id) {
   $("#spinnerLoader").show();
 
   setCookie("login-type", id, 2);
-  App.init();
+  App.init(false);
+}
+
+function enableWalletProviderFromModal(id) {
+  $("#loginBtns").hide();
+  $("#spinnerLoader").show();
+
+  setCookie("login-type", id, 2);
+  App.init(true);
 }

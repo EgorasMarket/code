@@ -9,13 +9,8 @@ class Home extends Controller
 	public function index($name = '', $otherName = '')
 	{
 		$data = "";
-		//$name = "";
-		if (isset($name) && $name == "become-a-driver") {
-			$this->view('home/driver');
-		} else {
-			$this->view('home/about-us', $data);
-			// $this->view('home/about-us', $data);
-		}
+		//$this->view('home/about-us', $data);
+		$this->view('home/index', $data);
 	}
 
 

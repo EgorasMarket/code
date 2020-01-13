@@ -1,5 +1,5 @@
 <?php
-$isLive = true;
+$isLive = false;
 if ($isLive) {
     define('API_SERVER', 'https://api.egoras.com');
 } else {

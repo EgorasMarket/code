@@ -5,6 +5,10 @@
 <?php
 $rs = json_decode($data['response']['data'], true);
 $cookie_walletId =  $_COOKIE['walletId'];
+// echo "<pre>";
+// var_dump($data['response']['data']);
+// echo "</pre>";
+
 ?>
 <div class="container-fluid mt-2" id="topBanner">
     <div class="row mt-3">
@@ -67,7 +71,7 @@ $cookie_walletId =  $_COOKIE['walletId'];
                                 // echo "</pre>";
 
                                 foreach ($rs as $key => $value) {
-                                    if ($value['status'] == "2") {
+                                    if ($value['is_lock'] == "1" && $value['status'] !== "1") {
                                         $id = $value['id'];
                                         $category = $value['category'];
                                         $sub_category = $value['sub_category'];
@@ -128,7 +132,7 @@ $cookie_walletId =  $_COOKIE['walletId'];
                                                         } else {
                                                         ?>
                                                             <div class="alert alert-warning " role="alert">
-                                                                <small>Make you have received the item before releasing fund.</small>
+                                                                <small>Make sure that you have received the item before releasing fund.</small>
                                                             </div>
                                                             <a href="/dispute/" class="btn btn-warning btn-sm">Dispute</a>
                                                             <button type="button" id="<?php echo $value['tokon_id']; ?>" onclick="App.releaseFund(this.id)" class="btn btn-info btn-sm">Release Fund</button>
