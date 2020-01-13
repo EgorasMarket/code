@@ -1,6 +1,6 @@
 {
-    "egorasEUSDAddress": "0x15DFAE7aD717C85B87593B0897a8929a93E08038",
-    "egoCoinAddress": "0x293011ec09cbfA505F1e22ddF46f4674C7611567",
+    "egorasEUSDAddress": "0x36f74852Ab54b0F3193A4bc51A78671284a2dD90",
+    "egoCoinAddress": "0x97DA1715a433659e6843E5a326D0F97605Bf6d6d",
     "abi": [{
             "constant": false,
             "inputs": [{

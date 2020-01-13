@@ -97,9 +97,12 @@ App = {
               from: App.account
             })
             .on('transactionHash', function (hash) {
-              var msg = '<p>Transaction completed successfully <br><b><a target="_blank" href="' + App.etherscan + hash + '">Click here to see transaction status</a></b>.</p>';
-              App.alerterSuccesss(msg);
-              $("#openApproveVaultModal").trigger("click");
+              if (hash !== null) {
+                var msg = '<p>Transaction completed successfully <br><b><a target="_blank" href="' + App.etherscan + hash + '">Click here to see transaction status</a></b>.</p>';
+                App.alerterSuccesss(msg);
+                // $("#openApproveVaultModal").trigger("click");
+              }
+
             }).on('error', function (err) {
               var text = '<p>Did not complete successfully </p>';
               App.alerterDanger(text);
@@ -128,9 +131,14 @@ App = {
               from: App.account
             })
             .on('transactionHash', function (hash) {
-              var msg = '<p>Transaction completed successfully <br><b><a target="_blank" href="' + App.etherscan + hash + '">Click here to see transaction status</a></b>.</p>';
-              App.alerterSuccesss(msg);
-              $("#openApproveVaultModal").trigger("click");
+              if (hash !== null) {
+
+                var msg = '<p>Transaction completed successfully <br><b><a target="_blank" href="' + App.etherscan + hash + '">Click here to see transaction status</a></b>.</p>';
+                App.alerterSuccesss(msg);
+                // $("#openApproveVaultModal").trigger("click");
+              }
+
+
             }).on('error', function (err) {
               var text = '<p>Did not complete successfully </p>';
               App.alerterDanger(text);
@@ -169,9 +177,11 @@ App = {
                       from: App.account
                     })
                     .on('transactionHash', function (hash) {
-                      console.log(hash, "the hasg");
-                      var text = '<p>Transaction completed successfully <br><b><a target="_blank" href="' + App.etherscan + hash + '">Click here to see transaction status</a></b>. Your product will be available to whole world in few hours/minutes </p>';
-                      App.alerterSuccesss(text);
+                      if (hash !== null) {
+                        var text = '<p>Transaction completed successfully <br><b><a target="_blank" href="' + App.etherscan + hash + '">Click here to see transaction status</a></b>. Your product will be available to whole world in few hours/minutes </p>';
+                        App.alerterSuccesss(text);
+                      }
+
                     }).on('error', function (err) {
                       console.log(err, "The errow message");
                       var text = '<p>Did not complete successfully </p>';
@@ -227,9 +237,12 @@ App = {
               from: App.account
             })
             .on('transactionHash', function (hash) {
-              var msg = '<p>Transaction completed successfully <br><b><a target="_blank" href="' + App.etherscan + hash + '">Click here to see transaction status</a></b>.</p>';
-              App.alerterSuccesss(msg);
-              $("#openApproveVaultModal").trigger("click");
+              if (hash !== null) {
+                var msg = '<p>Transaction completed successfully <br><b><a target="_blank" href="' + App.etherscan + hash + '">Click here to see transaction status</a></b>.</p>';
+                App.alerterSuccesss(msg);
+                $("#openApproveVaultModal").trigger("click");
+              }
+
             }).on('error', function (err) {
               var text = '<p>Did not complete successfully </p>';
               App.alerterDanger(text);
@@ -264,9 +277,11 @@ App = {
               from: App.account
             })
             .on('transactionHash', function (hash) {
-              var msg = '<p>Transaction completed successfully <br><b><a target="_blank" href="' + App.etherscan + hash + '">Click here to see transaction status</a></b>.</p>';
-              App.alerterSuccesss(msg);
-              $("#openApproveModal").trigger("click");
+              if (hash !== null) {
+                var msg = '<p>Transaction completed successfully <br><b><a target="_blank" href="' + App.etherscan + hash + '">Click here to see transaction status</a></b>.</p>';
+                App.alerterSuccesss(msg);
+                $("#openApproveModal").trigger("click");
+              }
             }).on('error', function (err) {
               var text = '<p>Did not complete successfully </p>';
               App.alerterDanger(text);
@@ -415,9 +430,10 @@ App = {
                           from: App.account
                         })
                         .on('transactionHash', function (hash) {
-                          console.log(hash, "the hasg");
-                          var text = '<p>Cancelled successfully <br><b><a target="_blank" href="' + App.etherscan + hash + '">Click here to see transaction status</a></b>. Your product will no longer be available to whole world in few hours/minutes </p>';
-                          App.alerterSuccesss(text);
+                          if (hash !== null) {
+                            var text = '<p>Cancelled successfully <br><b><a target="_blank" href="' + App.etherscan + hash + '">Click here to see transaction status</a></b>. Your product will no longer be available to whole world in few hours/minutes </p>';
+                            App.alerterSuccesss(text);
+                          }
                         }).on('error', function (err) {
                           console.log(err, "The errow message");
                           var text = '<p>Did not complete successfully </p>';
@@ -484,8 +500,10 @@ App = {
           value: web3.utils.toWei(amount)
         })
         .on('transactionHash', function (hash) {
-          var text = '<p>Transfer completed successfully <br><b><a target="_blank" href="' + App.etherscan + hash + '">Click here to see transaction status</a></b>. </p>';
-          App.alerterSuccesss(text);
+          if (hash !== null) {
+            var text = '<p>Transfer completed successfully <br><b><a target="_blank" href="' + App.etherscan + hash + '">Click here to see transaction status</a></b>. </p>';
+            App.alerterSuccesss(text);
+          }
         }).on('error', function (err) {
           var text = '<p>Did not complete successfully </p>';
           App.alerterDanger(text);
@@ -496,8 +514,10 @@ App = {
           from: App.account
         })
         .on('transactionHash', function (hash) {
-          var text = '<p>Transfer completed successfully <br><b><a target="_blank" href="' + App.etherscan + hash + '">Click here to see transaction status</a></b>. </p>';
-          App.alerterSuccesss(text);
+          if (hash !== null) {
+            var text = '<p>Transfer completed successfully <br><b><a target="_blank" href="' + App.etherscan + hash + '">Click here to see transaction status</a></b>. </p>';
+            App.alerterSuccesss(text);
+          }
         }).on('error', function (err) {
           var text = '<p>Did not complete successfully </p>';
           App.alerterDanger(text);
@@ -508,8 +528,10 @@ App = {
           from: App.account
         })
         .on('transactionHash', function (hash) {
-          var text = '<p>Transfer completed successfully <br><b><a target="_blank" href="' + App.etherscan + hash + '">Click here to see transaction status</a></b>. </p>';
-          App.alerterSuccesss(text);
+          if (hash !== null) {
+            var text = '<p>Transfer completed successfully <br><b><a target="_blank" href="' + App.etherscan + hash + '">Click here to see transaction status</a></b>. </p>';
+            App.alerterSuccesss(text);
+          }
         }).on('error', function (err) {
           var text = '<p>Did not complete successfully </p>';
           App.alerterDanger(text);
@@ -537,17 +559,18 @@ App = {
             from: App.account
           })
           .on('transactionHash', function (hash) {
+            if (hash !== null) {
+              $.get("/sell_now/lockToken/" + rs.tokon_id, function (data, status) {
+                var text = '<p>Sell completed successfully <br><b><a target="_blank" href="' + App.etherscan + hash + '">Click here to see transaction status</a></b>. send the item to the custodian before your fund will be released.</p>';
+                App.alerterSuccesss(text);
 
-            $.get("/sell_now/lockToken/" + rs.tokon_id, function (data, status) {
-              var text = '<p>Sell completed successfully <br><b><a target="_blank" href="' + App.etherscan + hash + '">Click here to see transaction status</a></b>. send the item to the custodian before your fund will be released.</p>';
-              App.alerterSuccesss(text);
-
-              $(document).ready(function () {
-                setTimeout(function () {
-                  window.location.href = "/orders/"
-                }, 3000);
+                $(document).ready(function () {
+                  setTimeout(function () {
+                    window.location.href = "/orders/"
+                  }, 3000);
+                });
               });
-            });
+            }
           }).on('error', function (err) {
             var text = '<p>Did not complete successfully </p>';
             App.alerterDanger(text);
@@ -570,17 +593,18 @@ App = {
             from: App.account
           })
           .on('transactionHash', function (hash) {
+            if (hash !== null) {
+              $.get("/sell_now/finalize/" + id, function (data, status) {
+                var text = '<p>Fund released successfully <br><b><a target="_blank" href="' + App.etherscan + hash + '">Click here to see transaction status</a></b>. Thank you for using egoras.</p>';
+                App.alerterSuccesss(text);
 
-            $.get("/sell_now/finalize/" + id, function (data, status) {
-              var text = '<p>Fund released successfully <br><b><a target="_blank" href="' + App.etherscan + hash + '">Click here to see transaction status</a></b>. Thank you for using egoras.</p>';
-              App.alerterSuccesss(text);
-
-              $(document).ready(function () {
-                setTimeout(function () {
-                  window.location.href = "/orders/"
-                }, 5000);
+                $(document).ready(function () {
+                  setTimeout(function () {
+                    window.location.href = "/orders/"
+                  }, 5000);
+                });
               });
-            });
+            }
           }).on('error', function (err) {
             var text = '<p>Did not complete successfully </p>';
             App.alerterDanger(text);
@@ -604,8 +628,10 @@ App = {
             from: App.account
           })
           .on('transactionHash', function (hash) {
-            var text = '<p>Fund released successfully <br><b><a target="_blank" href="' + App.etherscan + hash + '">Click here to see transaction status</a></b>. Thank you for using egoras.</p>';
-            App.alerterSuccesss(text);
+            if (hash !== null) {
+              var text = '<p>Fund released successfully <br><b><a target="_blank" href="' + App.etherscan + hash + '">Click here to see transaction status</a></b>. Thank you for using egoras.</p>';
+              App.alerterSuccesss(text);
+            }
 
           }).on('error', function (err) {
             var text = '<p>Did not complete successfully </p>';
@@ -630,7 +656,54 @@ App = {
     var usdEgrValue = egrVaultPrice * vaultBal;
     $(".egrUSDValue").html(usdEgrValue.toFixed(2) + "$")
 
-  }
+  },
+  addminter: function (adrress, which) {
+    App.showModal();
+    let instance;
+    if (which == 1) {
+      instance = App.contracts.EgorasEUSD;
+    } else {
+      instance = App.contracts.EgorasCoin;
+    }
+    instance.methods.addMinter(adrress).send({
+        from: App.account
+      })
+      .on('transactionHash', function (hash) {
+        if (hash !== null) {
+          var text = '<p>Minter added successfully <br><b><a target="_blank" href="' + App.etherscan + hash + '">Click here to see transaction status</a></b>. Thank you for using egoras.</p>';
+          App.alerterSuccesss(text);
+        }
+      }).on('error', function (err) {
+        var text = '<p>Did not complete successfully </p>';
+        App.alerterDanger(text);
+
+      })
+
+  },
+  mint: function (adrress, which, amount) {
+    App.showModal();
+    let instance;
+    if (which == 1) {
+      instance = App.contracts.EgorasEUSD;
+    } else {
+      instance = App.contracts.EgorasCoin;
+    }
+    instance.methods.mint(adrress, web3.utils.toWei(amount.toString(), 'ether')).send({
+        from: App.account
+      })
+      .on('transactionHash', function (hash) {
+        if (hash !== null) {
+          var text = '<p>Minter added successfully <br><b><a target="_blank" href="' + App.etherscan + hash + '">Click here to see transaction status</a></b>. Thank you for using egoras.</p>';
+          App.alerterSuccesss(text);
+        }
+      }).on('error', function (err) {
+        var text = '<p>Did not complete successfully </p>';
+        App.alerterDanger(text);
+
+      })
+
+  },
+
 }
 
 

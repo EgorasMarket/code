@@ -2,7 +2,7 @@
 <?php require_once("public/page-parts/sidebar.php") ?>
 <?php
 //  require_once("public/page-parts/navbar.php")
- ?>
+?>
 <nav class="navbar navbar-light bg-light">
     <div class="container">
         <a class="navbar-brand" href="/">
@@ -29,7 +29,7 @@
             <a href="public/static/assets/side/Egoras-Market.pdf" class="btn res btn-outline-orange paper-button-line btn-lg">Read the Paper</a>
         </div>
         <div class="section2 mt-3 pb-4">
-            <h1 class="text-center sub-heading2">Decentralized, Commerce.</h1> 
+            <h1 class="text-center sub-heading2">Decentralized, Commerce.</h1>
             <div class="container">
                 <div class="row">
                     <div class="col-md-10 offset-md-1">
@@ -74,7 +74,7 @@
         </div>
         <div class="py-5 bg-orange">
             <div class="orange-over">
-                
+
             </div>
             <div class="container">
                 <div class="row">
@@ -84,7 +84,7 @@
                                 <h1 class="sub-heading2 respond text-white">Global Commerce.</h1>
                                 <p class="text-white">Egoras intend to create a global Re-commerce platform for everyone, globally. Removing barriers and allow anyone to transact with anyone else, anytime, anywhere and also connecting people all around the world with to a platform with an equal playing field between the banked and unbanked.</p>
                                 <p class="text-white">Despite the level of globalization today, it remains difficult to transact across borders. Egoras intends to break this barrier by introducing its stable currency which is supported by modern blockchain technologies, with stable price-anchoring hard-coded into the system.</p>
-                                <p class="text-white">The pricing of the  Egoras Dollar is relatively stable; it is pegged to the value of united states dollar and backed by cryptocurrency collaterals.</p>
+                                <p class="text-white">The pricing of the Egoras Dollar is relatively stable; it is pegged to the value of united states dollar and backed by cryptocurrency collaterals.</p>
                                 <!-- <button type="button" class="btn btn-outline-orange paper-button-line ">Learn More</button> -->
                             </div>
                             <div class="col-md-6 flex-a2">
@@ -99,7 +99,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-9">
-                                    <h1 class="sub-heading2 respond mb-0 mt-3 text-white">The Egoras  Marketplace.</h1>
+                                    <h1 class="sub-heading2 respond mb-0 mt-3 text-white">The Egoras Marketplace.</h1>
                                     <p class="mb-4 respond text-white">Built ON ETHEREUM</p>
                                     <div class="row">
                                         <div class="col-md-4">
@@ -108,7 +108,7 @@
                                         </div>
                                         <div class="col-md-4">
                                             <h6 class="text-white"><img src="public/static/assets/company/success.png" width="20" class="img-fluid mr-3" alt="...">Security</h6>
-                                            <p class="text-white" style="margin-left: 35px">Egoras marketplace is built from the ground up on ethereum blockchain and the Distributed Ledger Technology or DLT which  Ethereum blockchain boasts, offer excellent security for online database platforms that makes it ideal for implementation in Re-Commerce.</p>
+                                            <p class="text-white" style="margin-left: 35px">Egoras marketplace is built from the ground up on ethereum blockchain and the Distributed Ledger Technology or DLT which Ethereum blockchain boasts, offer excellent security for online database platforms that makes it ideal for implementation in Re-Commerce.</p>
                                         </div>
                                         <div class="col-md-4">
                                             <h6 class="text-white"><img src="public/static/assets/company/success.png" width="20" class="img-fluid mr-3" alt="...">Transparency</h6>
@@ -120,13 +120,13 @@
                         </div>
                     </div>
                 </div>
-                
+
             </div>
-        </div> 
+        </div>
         <div class="bg-white py-3">
             <div class="container">
                 <div class="my-4">
-                    <h4 class="text-center  mb-2">MEET OUR TEAM</h4> 
+                    <h4 class="text-center  mb-2">MEET OUR TEAM</h4>
                     <p class="text-center mx-auto" style="width:75%">A multidisciplinary team with proven ability to deliver complex solutions</p>
                     <div id="team" class="mt-3">
                         <div class="row">
@@ -137,12 +137,12 @@
                                             <img src="public/static/assets/company/harrison-Ogemdi.png" alt="">
                                             <div class="team-hover">
                                                 <div class="team-content">
-                                                <h4 class="text-dark">Ugoji Harry <span>Product</span></h4>
+                                                    <h4 class="text-dark">Ugoji Harry <span>Product</span></h4>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <!-- <div class="col-md-4">
                                         <div class="single-team my-3">
                                             <img src="public/static/assets/company/Uzochuwku.jpg" alt="">
                                             <div class="team-hover">
@@ -151,13 +151,13 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="col-md-4">
                                         <div class="single-team my-3">
                                             <img src="public/static/assets/company/Izunna-Isdore.jpg" alt="">
                                             <div class="team-hover">
                                                 <div class="team-content">
-                                                <h4 class="text-dark">Izunna Isdore <span>Legal</span></h4>
+                                                    <h4 class="text-dark">Izunna Isdore <span>Legal</span></h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -167,7 +167,7 @@
                                             <img src="public/static/assets/company/Onoseme-Mudiaga-Moses.jpg" alt="">
                                             <div class="team-hover">
                                                 <div class="team-content">
-                                                <h4 class="text-dark">Onoseme Mudiaga Moses <span>Design</span></h4>
+                                                    <h4 class="text-dark">Onoseme Mudiaga Moses <span>Design</span></h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -177,7 +177,7 @@
                                             <img src="public/static/assets/company/Chidubem-micheal.jpg" alt="">
                                             <div class="team-hover">
                                                 <div class="team-content">
-                                                <h4 class="text-dark">Chidubem Micheal <span>Engineering</span></h4>
+                                                    <h4 class="text-dark">Chidubem Micheal <span>Engineering</span></h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -187,7 +187,7 @@
                                             <img src="public/static/assets/company/Partha-bardhan.jpg" alt="">
                                             <div class="team-hover">
                                                 <div class="team-content">
-                                                <h4 class="text-dark">Partha bardhan <span>Community Manager</span></h4>
+                                                    <h4 class="text-dark">Partha bardhan <span>Community Manager</span></h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -212,7 +212,7 @@
                         <div class="col-md-6">
                             <div class="my-3">
                                 <div id="contact"></div>
-                                <form  id="form2" method="post" enctype="multipart/form-data">
+                                <form id="form2" method="post" enctype="multipart/form-data">
                                     <div class="form-group">
                                         <input type="text" class="form-control" name="fullname" placeholder="Name" id="">
                                     </div>
@@ -229,10 +229,10 @@
                     </div>
                 </div>
             </div>
-        </div> 
+        </div>
     </div>
-    
-      
+
+
 </div>
 
 
@@ -256,16 +256,14 @@
                         </ul>
                     </div>
                 </div>
-            </div> 
+            </div>
         </div>
     </div>
 </div>
 
-<?php 
-require_once("public/page-parts/modals.php") ;
+<?php
+require_once("public/page-parts/modals.php");
 // require_once("public/page-parts/site-footer.php");
- ?>
- <script src="/public/static/js/waitlist.js"></script>
- <script src="/public/static/js/contact-us.js"></script>
-
-
+?>
+<script src="/public/static/js/waitlist.js"></script>
+<script src="/public/static/js/contact-us.js"></script>

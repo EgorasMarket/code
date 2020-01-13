@@ -10,22 +10,21 @@ class Home extends Controller
 	{
 		$data = "";
 		//$name = "";
-		if(isset($name) && $name == "become-a-driver"){
+		if (isset($name) && $name == "become-a-driver") {
 			$this->view('home/driver');
-		}else{
-			$this->view('home/index', $data);
+		} else {
+			$this->view('home/about-us', $data);
 			// $this->view('home/about-us', $data);
 		}
-		
 	}
 
-	
 
-	
-	public function referal($value='')
+
+
+	public function referal($value = '')
 	{
-		if (setcookie( "refer", $value, time()+96000 * 50, '/')){
-				redirect_to("/");
+		if (setcookie("refer", $value, time() + 96000 * 50, '/')) {
+			redirect_to("/");
 		}
 	}
 }
