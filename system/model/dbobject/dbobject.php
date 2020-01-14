@@ -87,6 +87,23 @@ class dbObject{
 		}
 	}
 
+	public static function dynamic_check_col ($col_name1= "", $obj_name1=""){
+		global $db;
+		$col_name = $db->SQLEscape($col_name1);
+		$obj_name = $db->SQLEscape($obj_name1);
+
+		
+		$sql  = "SELECT id FROM ".static::$tName;
+		$sql .= " WHERE `{$col_name1}` ='{$obj_name1}' ";
+		$sql .= "LIMIT 1";
+		$result = $db->query($sql);
+		if ($db->numRows($result) > 0){
+			return true;
+		}else {
+			return false;
+		}
+	}
+
 
 	public static function get_driver_img ($user_id=0){
 		global $db;

@@ -1,36 +1,38 @@
 <?php
 
-// Security
-define('SECRETE_KEY', 'qwertya!~qwerpoiuvfx4*$#');
+    // Security
+    define('SECRETE_KEY', 'qwertya!~qwerpoiuvfx4*$#');
 
-// Data Types
-define('BOOLEAN', '1');
-define('INTEGER', '2');
-define('STRING',  '3');
+    // Data Types
+    define('BOOLEAN', '1');
+    define('INTEGER', '2');
+    define('STRING',  '3');
 
-// Error Codes
-define('REQUEST_METHOD_NOT_VALID',  100);
-define('REQUEST_CONTENTTYPE_NOT_VALID',  101);
-define('REQUEST_NOT_VALID',  102);
-define('VALIDATE_PARAMETER_REQUIRED',  103);
-define('VALIDATE_PARAMETER_DATATYPE',  104);
-define('API_NAME_REQUIRED',  105);
-define('API_PARAM_REQUIRED',  106);
-define('API_DOES_NOT_EXIST',  107);
-define('INVALID_USER_PASS',  108);
-define('FAILED_QUERY',  109);
-define('SITE_DOMAIN_NAME',  "http://egoras.org");
-define('ACCOUNT_VERIFICATION',  "Driver Hood account verification");
-define('PASSWORD_RESET',  "Driver Hood password reset");
-define('EMAIL_FROM',  "From: <cs@rawdev.com.ng>");
-define('MIME_VERSION',  "MIME-Version: 1.0");
-define('HTML_EMAIL_CONTENT_TYPE',  "Content-type:text/html;charset=UTF-8");
+    // Error Codes
+    define('REQUEST_METHOD_NOT_VALID',  100);
+    define('REQUEST_CONTENTTYPE_NOT_VALID',  101);
+    define('REQUEST_NOT_VALID',  102);
+    define('VALIDATE_PARAMETER_REQUIRED',  103);
+    define('VALIDATE_PARAMETER_DATATYPE',  104);
+    define('API_NAME_REQUIRED',  105);
+    define('API_PARAM_REQUIRED',  106);
+    define('API_DOES_NOT_EXIST',  107);
+    define('INVALID_USER_PASS',  108);
+    define('FAILED_QUERY',  109);
+    define('SITE_DOMAIN_NAME',  "http://egoras.org");
+    define('ACCOUNT_VERIFICATION',  "Driver Hood account verification");
+    define('PASSWORD_RESET',  "Driver Hood password reset");
+    define('EMAIL_FROM',  "From: <cs@rawdev.com.ng>");
+    define('MIME_VERSION',  "MIME-Version: 1.0");
+    define('HTML_EMAIL_CONTENT_TYPE',  "Content-type:text/html;charset=UTF-8");
+  
 
+    
+    
+    define('SUCCESS_RESPONSE',  200);
 
+    // Server Errors
+    define('AUTHORIZATION_HEADER_NOT_FOUND',  300);
+    define('ACCESS_TOKEN_ERRORS',  301);
 
-
-define('SUCCESS_RESPONSE',  200);
-
-// Server Errors
-define('AUTHORIZATION_HEADER_NOT_FOUND',  300);
-define('ACCESS_TOKEN_ERRORS',  301);
+    

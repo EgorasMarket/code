@@ -560,6 +560,18 @@ function fetch_open_phones_by_brand($brand = "")
 	return $main_result;
 }
 
+function fetch_open_phones_by_model($model = "")
+{
+	global $db;
+	// $type = $db->SQLEscape($type);
+	$sql = "SELECT * FROM `gadgets` WHERE `is_lock`=0 AND `model`='{$model}' ORDER BY `price` DESC";
+	$rsArray = $db->query($sql);
+
+	$main_result = $db->fetchAll($rsArray);
+
+	return $main_result;
+}
+
 function fetch_phones_by_walletid($walletId = "")
 {
 	global $db;
@@ -584,7 +596,31 @@ function fetch_user_info($walletId = "")
 	return $main_result;
 }
 
-function fetch_msg_by_sellerid($walletId = "")
+function fetch_msg_by_walletId($walletId = "")
+{
+	global $db;
+	// $type = $db->SQLEscape($type);
+	$sql = "SELECT `messages`.`product_slug`, message, date_created FROM `messages` WHERE `messages`.`seller`='{$walletId}' OR `messages`.`buyer`='{$walletId}' GROUP BY product_slug ORDER BY date_created DESC";
+	$rsArray = $db->query($sql);
+
+	$main_result = $db->fetchAll($rsArray);
+
+	return $main_result;
+}
+
+function fetch_msg_by_slug($slug = "")
+{
+	global $db;
+	// $type = $db->SQLEscape($type);
+	$sql = "SELECT `messages`.`product_slug`, `messages`.`seller`, `messages`.`buyer`, `messages`.`message`, `messages`.`date_created` FROM `messages` WHERE `messages`.`product_slug`='{$slug}' ORDER BY date_created ASC";
+	$rsArray = $db->query($sql);
+
+	$main_result = $db->fetchAll($rsArray);
+
+	return $main_result;
+}
+
+function fetch_msg_by_sellerid($seller = "")
 {
 	global $db;
 	// $type = $db->SQLEscape($type);
@@ -624,7 +660,7 @@ function order_histroy($walletId = "")
 {
 	global $db;
 	// $type = $db->SQLEscape($type);
-	$sql = "SELECT * FROM `gadgets` WHERE `walletId`='{$walletId}' OR `lockBy` ='{$walletId}' AND `is_lock`='1'  ORDER BY `price` DESC";
+	$sql = "SELECT * FROM `gadgets` WHERE `walletId`='{$walletId}' OR `lockBy` ='{$walletId}' AND `status`='1' OR  `status`='2' ORDER BY `price` DESC";
 	$rsArray = $db->query($sql);
 
 	$main_result = $db->fetchAll($rsArray);
@@ -636,6 +672,17 @@ function getModelById($brand_id = "")
 {
 	global $db;
 	$sql = "SELECT `model` FROM `models` WHERE `phone_id`='{$brand_id}'";
+	$rsArray = $db->query($sql);
+
+	$main_result = $db->fetchAll($rsArray);
+
+	return $main_result;
+}
+
+function getModelByBrand($brand = "")
+{
+	global $db;
+	$sql = "SELECT `model`, `img`  FROM `models` WHERE `name`='{$brand}' LIMIT 4";
 	$rsArray = $db->query($sql);
 
 	$main_result = $db->fetchAll($rsArray);

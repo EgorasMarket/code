@@ -110,6 +110,16 @@ class Api extends Rest
     $this->return_response(SUCCESS_RESPONSE,  $data);
   }
 
+  public function fetch_models_for_index()
+  {
+
+    $brand =           $this->validate_parameter("brand", $this->param['brand'], STRING);
+    $findAll = getModelByBrand($brand);
+    // print_r($findAll);
+    $data = json_encode($findAll);
+    $this->return_response(SUCCESS_RESPONSE,  $data);
+  }
+
   public function fetch_model_info()
   {
     $model =           $this->validate_parameter("model", $this->param['model'], STRING);
@@ -124,7 +134,9 @@ class Api extends Rest
 
 
     $brand_id =       $this->validate_parameter("brand_id", $this->param['brand_id'], INTEGER);
+    $name =           $this->validate_parameter("name", $this->param['name'], STRING);
     $model =          $this->validate_parameter("model", $this->param['model'], STRING);
+    $img =            $this->validate_parameter("model", $this->param['img'], STRING);
     $details =        $this->validate_parameter("details", $this->param['details'], STRING);
 
 
@@ -132,7 +144,9 @@ class Api extends Rest
     $list = new Branddetails();
 
     $list->phone_id        =  $brand_id;
+    $list->name            =  $name;
     $list->model           =  $model;
+    $list->img             =  $img;
     $list->full_info       =  $details;
 
 
@@ -140,6 +154,27 @@ class Api extends Rest
     if ($list->save()) {
 
       $data = ['message' => "Model details inserted successfully"];
+      $this->return_response(SUCCESS_RESPONSE,  $data);
+    } else {
+      $this->throw_error(FAILED_QUERY, "Unknown error occurred.");
+    }
+  }
+
+  public function add_phone()
+  {
+
+
+    $phone =        $this->validate_parameter("phone", $this->param['phone'], STRING);
+
+
+
+    $list = new Phones();
+
+    $list->phone        =  $phone;
+
+    if ($list->save()) {
+
+      $data = ['message' => "New phone inserted successfully, please refresh page before adding model details for {$phone}."];
       $this->return_response(SUCCESS_RESPONSE,  $data);
     } else {
       $this->throw_error(FAILED_QUERY, "Unknown error occurred.");
@@ -294,25 +329,46 @@ class Api extends Rest
 
   public function insert_seller_message()
   {
-
-
+    $slug =           $this->validate_parameter("slug", $this->param['slug'], STRING);
     $seller =         $this->validate_parameter("seller", $this->param['seller'], STRING);
     $buyer =          $this->validate_parameter("buyer", $this->param['buyer'], STRING);
     $message =        $this->validate_parameter("content", $this->param['content'], STRING);
 
-
-
     $list = new Messages();
 
+    $list->product_slug =  $slug;
     $list->seller       =  $seller;
     $list->buyer        =  $buyer;
     $list->message      =  $message;
 
+    if ($list->save()) {
 
+      $data = ['message' => "Your message has was sent successfully!"];
+      $this->return_response(SUCCESS_RESPONSE,  $data);
+    } else {
+      $this->throw_error(FAILED_QUERY, "Unknown error occurred.");
+    }
+  }
+
+  public function insert_buyer_reply()
+  {
+    // $reply_to =         $this->validate_parameter("reply_to", $this->param['reply_to'], INTEGER);
+    $slug =             $this->validate_parameter("product_slug", $this->param['product_slug'], STRING);
+    $seller =           $this->validate_parameter("seller", $this->param['seller'], STRING);
+    $buyer =            $this->validate_parameter("buyer", $this->param['buyer'], STRING);
+    $message =          $this->validate_parameter("content", $this->param['content'], STRING);
+
+    $list = new Messages();
+
+    // $list->reply_to     =  $reply_to;
+    $list->product_slug =  $slug;
+    $list->seller       =  $seller;
+    $list->buyer        =  $buyer;
+    $list->message      =  $message;
 
     if ($list->save()) {
 
-      $data = ['message' => "successful!"];
+      $data = ['message' => "Your message has was sent successfully!"];
       $this->return_response(SUCCESS_RESPONSE,  $data);
     } else {
       $this->throw_error(FAILED_QUERY, "Unknown error occurred.");
@@ -387,6 +443,17 @@ class Api extends Rest
     $this->return_response(SUCCESS_RESPONSE,  $data);
   }
 
+  public function fetch_open_listings_by_model()
+  {
+    $model =     $this->validate_parameter("model", $this->param['model'], STRING);
+
+    $findAll = fetch_open_phones_by_model($model);
+
+    // print_r ($findAll);
+    $data = json_encode($findAll);
+    $this->return_response(SUCCESS_RESPONSE,  $data);
+  }
+
   public function fetch_listings_by_walletId()
   {
     $walletId =     $this->validate_parameter("walletId", $this->param['walletId'], STRING);
@@ -395,6 +462,26 @@ class Api extends Rest
     // print_r ($findAll);
     $data = json_encode($findAll);
     $this->return_response(SUCCESS_RESPONSE,  $data);
+  }
+
+  public function fetch_all_message()
+  {
+    $walletId =     $this->validate_parameter("walletId", $this->param['walletId'], STRING);
+    $findAll = fetch_msg_by_walletId($walletId);
+
+    // print_r ($findAll);
+    $data = json_encode($findAll);
+    $this->return_response(SUCCESS_RESPONSE,  $data);
+  }
+
+  public function get_message_by_slug()
+  {
+    $slug =     $this->validate_parameter("slug", $this->param['slug'], STRING);
+    $findAll = fetch_msg_by_slug($slug);
+
+    // print_r ($findAll);
+    $data = json_encode($findAll);
+    $this->return_response(SUCCESS_RESPONSE,  $findAll);
   }
 
   public function fetch_seller_message()
@@ -498,7 +585,7 @@ class Api extends Rest
     $result = updateGadgets("gadgets", "is_lock", 1, "status", 2, "lockBy", $wallet, "tokon_id", $token_id);
     if ($result == true) {
 
-      $data = ['message' => "Update was successful!"];
+      $data = ['message' => "Updated was successful!"];
       $this->return_response(SUCCESS_RESPONSE,  $data);
     } else {
       $this->throw_error(FAILED_QUERY, "Unknown error occurred.");
