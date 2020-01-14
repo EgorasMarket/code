@@ -1058,7 +1058,7 @@ a[aria-expanded="true"] {
 }
 
 .msg_history {
-  /* height: 516px; */
+  height: 516px;
   overflow-y: auto;
 }
 

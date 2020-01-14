@@ -20,38 +20,38 @@ $(document).ready(function () {
           } else {
             $.each(JSON.parse(rs.response.data), function (k, v) {
 
-                // console.log(v);
+                console.log(v);
                 
-              //   var count = 40;
-              //   var product_slug = v.product_slug;
-              //   var clean = product_slug.replace(/-/g, " ");
-              //   // var buyer_id = v.buyer;
-              //   var message = v.message;
-              //   var date_created = v.date_created;
+                var count = 40;
+                var product_slug = v.product_slug;
+                var clean = product_slug.replace(/-/g, " ");
+                // var buyer_id = v.buyer;
+                var message = v.message;
+                var date_created = v.date_created;
 
-              //   var result = clean.slice(0, count) + (clean.length > count ? "..." : "");
+                var result = clean.slice(0, count) + (clean.length > count ? "..." : "");
 
-              //   function getDateFormat(date) {
-              //       var d = new Date(date),
-              //               month = '' + (d.getMonth() + 1),
-              //               day = '' + d.getDate(),
-              //               year = d.getFullYear();
+                function getDateFormat(date) {
+                    var d = new Date(date),
+                            month = '' + (d.getMonth() + 1),
+                            day = '' + d.getDate(),
+                            year = d.getFullYear();
                     
-              //       if (month.length < 2)
-              //           month = '0' + month;
-              //       if (day.length < 2)
-              //           day = '0' + day;
-              //       var date = new Date();
-              //       date.toLocaleDateString();
+                    if (month.length < 2)
+                        month = '0' + month;
+                    if (day.length < 2)
+                        day = '0' + day;
+                    var date = new Date();
+                    date.toLocaleDateString();
                     
-              //       return [day, month, year].join(' ');
-              //   };
+                    return [day, month, year].join(' ');
+                };
 
-              //   var fomatdate = getDateFormat(date_created);
+                var fomatdate = getDateFormat(date_created);
     
-              // rowbody = '<a href="/unique_message/' + id + '"><div class="chat_list"><div class="chat_people"><div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div><div class="chat_ib"><h5>' + result +'<span class="chat_date">' + fomatdate +'</span></h5><p>' + message +'</p></div></div></div></a>';
+              rowbody = '<a href="/unique_message/' + id + '"><div class="chat_list"><div class="chat_people"><div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div><div class="chat_ib"><h5>' + result +'<span class="chat_date">' + fomatdate +'</span></h5><p>' + message +'</p></div></div></div></a>';
                 
-              // $("#chatnotification").append(rowbody);
+              $("#chatnotification").append(rowbody);
     
             });
           }

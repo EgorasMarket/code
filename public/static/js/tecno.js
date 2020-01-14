@@ -15,7 +15,7 @@ $(document).ready(function (){
                 var clnmodel = model.replace(/ /g, "-");
                 
 
-                listItems = '<div class="col-md-3 reset-padding"><a href="/unique_model/' + clnmodel + '"><div class="product-item" style="height:100%;"><h4>Tecno ' + v.model + '</h4><img class="zoom-in" src="/public/static/modelsimg/' + v.img + '"></div></a></div>';
+                listItems = '<div class="col-md-3 reset-padding"><a href="/unique_model/' + clnmodel + '"><div class="product-item" style="height:100%;"><h4>Tecno ' + v.model + '</h4><img class="zoom-in img-fluid" style="position: unset;" src="/public/static/modelsimg/' + v.img + '"></div></a></div>';
                 $("#tecnomodels").append(listItems);
             });
             // $("#iphonemodels").html(listItems);

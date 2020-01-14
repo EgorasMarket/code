@@ -30,7 +30,7 @@
       <div class="inbox_msg">
         
         <div class="mesgs">
-          <div class="msg_history list">
+          <div id="msg_history" class="msg_history list">
               <?php 
                 if (isset($_COOKIE['walletId'])) {
                     $walletId = $_COOKIE['walletId'];
