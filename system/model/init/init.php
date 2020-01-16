@@ -24,6 +24,7 @@ require_once (LIB_PATH.DS.'waitlist'.DS.'waitlist.php');
 require_once (LIB_PATH.DS.'contactus'.DS.'contactus.php');
 require_once (LIB_PATH.DS.'pmodel'.DS.'model.php');
 require_once (LIB_PATH.DS.'messages'.DS.'messages.php');
+require_once (LIB_PATH.DS.'dispute'.DS.'dispute.php');
 // require_once (LIB_PATH.DS.'payment'.DS.'driverpayment.php');
 // require_once (LIB_PATH.DS.'payment'.DS.'hirepayment.php');
 // require_once (LIB_PATH.DS.'report'.DS.'report.php');

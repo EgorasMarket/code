@@ -327,6 +327,33 @@ class Api extends Rest
     }
   }
 
+  public function insert_dispute()
+  {
+    $sender =         $this->validate_parameter("sender", $this->param['sender'], STRING);
+    $slug =           $this->validate_parameter("slug", $this->param['slug'], STRING);
+    $message =          $this->validate_parameter("message", $this->param['message'], STRING);
+    $upload =          $this->validate_parameter("upload", $this->param['upload'], STRING);
+    // $message =        $this->validate_parameter("content", $this->param['content'], STRING);
+
+    $list = new Dispute();
+
+    $list->slug =  $slug;
+    $list->sender       =  $sender;
+    $list->message        =  $message;
+    
+    if ($upload != "none") {
+      $list->upload      =  $upload;
+    }
+
+    if ($list->save()) {
+
+      $data = ['message' => "Your message has was sent successfully!"];
+      $this->return_response(SUCCESS_RESPONSE,  $data);
+    } else {
+      $this->throw_error(FAILED_QUERY, "Unknown error occurred.");
+    }
+  }
+
   public function insert_seller_message()
   {
     $slug =           $this->validate_parameter("slug", $this->param['slug'], STRING);
@@ -503,6 +530,18 @@ class Api extends Rest
     $data = json_encode($findAll);
     $this->return_response(SUCCESS_RESPONSE,  $data);
   }
+
+  public function fetch_dispute()
+  {
+    $slug =     $this->validate_parameter("slug", $this->param['slug'], STRING);
+
+    $findAll  = fetch_dispute_by_slug($slug);
+
+    // print_r ($findAll);
+    $data = json_encode($findAll);
+    $this->return_response(SUCCESS_RESPONSE,  $data);
+  }
+
 
   public function phone_search()
   {

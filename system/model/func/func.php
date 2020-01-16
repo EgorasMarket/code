@@ -644,6 +644,18 @@ function fetch_msg_by_buyerid($walletId = "")
 	return $main_result;
 }
 
+function fetch_dispute_by_slug($slug = "")
+{
+	global $db;
+	// $type = $db->SQLEscape($type);
+	$sql = "SELECT dispute_message.slug, dispute_message.sender, dispute_message.message, dispute_message.upload, dispute_message.date_added, user_info.first_name, user_info.last_name FROM `dispute_message` JOIN user_info ON dispute_message.sender=user_info.walletId WHERE `slug`='{$slug}' ORDER BY `date_added` DESC";
+	$rsArray = $db->query($sql);
+
+	$main_result = $db->fetchAll($rsArray);
+
+	return $main_result;
+}
+
 function pending_order($walletId = "")
 {
 	global $db;
