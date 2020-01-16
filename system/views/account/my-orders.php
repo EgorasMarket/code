@@ -73,6 +73,7 @@ $cookie_walletId =  $_COOKIE['walletId'];
                                 foreach ($rs as $key => $value) {
                                     if ($value['is_lock'] == "1" && $value['status'] !== "1") {
                                         $id = $value['id'];
+                                        // $walletId = $value['walletId'];
                                         $category = $value['category'];
                                         $sub_category = $value['sub_category'];
                                         $brand = $value['brand'];
@@ -90,10 +91,11 @@ $cookie_walletId =  $_COOKIE['walletId'];
                                         $battery = $value['battery'];
                                         $description = $value['description'];
                                         //    $img = $value['img'];
-                                        //    $slug = $value['slug'];
+                                           $slug = $value['slug'];
                                         $price = $value['price'];
 
                                         $phone_name = $brand . " " . $model;
+                                        // setcookie("disputeInfo", $slug.' '.$walletId, time()+13600);
 
 
 
@@ -120,13 +122,13 @@ $cookie_walletId =  $_COOKIE['walletId'];
                                                     </div>
                                                     <div class="col-md-12">
                                                         <?php
-
+                                                            
                                                         if (strtolower($cookie_walletId) == strtolower($value['lockBy'])) {
                                                         ?>
                                                             <div class="alert alert-warning " role="alert">
                                                                 <small>Awaiting custodian to release fund.</small>
                                                             </div>
-                                                            <a href="/dispute/" class="btn btn-warning btn-sm">Dispute</a>
+                                                            <a href="/dispute/<?php echo $slug; ?>" class="btn btn-warning btn-sm">Dispute</a>
 
                                                         <?php
                                                         } else {
@@ -134,7 +136,7 @@ $cookie_walletId =  $_COOKIE['walletId'];
                                                             <div class="alert alert-warning " role="alert">
                                                                 <small>Make sure that you have received the item before releasing fund.</small>
                                                             </div>
-                                                            <a href="/dispute/" class="btn btn-warning btn-sm">Dispute</a>
+                                                            <a href="/dispute/<?php echo $slug; ?>" class="btn btn-warning btn-sm">Dispute</a>
                                                             <button type="button" id="<?php echo $value['tokon_id']; ?>" onclick="App.releaseFund(this.id)" class="btn btn-info btn-sm">Release Fund</button>
                                                         <?php
                                                         }

@@ -22,6 +22,16 @@ $(document).ready(function () {
       var address = main[0].address;
       var state = main[0].state;
 
+      var user_info = {
+        "last_name" : last_name,
+        "first_name" : first_name,
+        "address" : address,
+        "state" : state,
+
+    }
+
+      var storage_save = localStorage.setItem('user_info', JSON.stringify(user_info));
+
       $("#user_name").append("<span>" + last_name + "</span>");
       // $("#address").append("<span>" + address + "</span>");
       // $("#state_o").append("<span>" + state + "</span>");

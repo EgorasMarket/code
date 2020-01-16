@@ -1,10 +1,15 @@
 $(document).ready(function () {
-
+    var slug = $("#slug"). val();
+    // console.log(slug);
+    var array = {
+        slug : slug
+    }
+    
 
     $.ajax({
-      url: "/get_message/all_messages",
+      url: "/get_dispute/",
       type: "POST",
-      //   data:  array_id,
+        data:  array,
   
   
   
@@ -12,7 +17,7 @@ $(document).ready(function () {
   
   
         var rs = JSON.parse(response);
-        console.log(rs);
+        // console.log(rs);
         
         if (JSON.parse(rs.response.data).length == 0) {
             // var rowbody = '<div class="col-md-12 col-sm-12"><div style="height:228px;padding:10px;"><div class="row align-items-center"><img style="height:70%;" src="/public/static/assets/company/abbreviation.png" class="img-fluid mx-auto" ></div><h6 class="text-center mt-2 text-muted">No more items from this custodian.</h6></div></div>';
@@ -20,16 +25,25 @@ $(document).ready(function () {
           } else {
             $.each(JSON.parse(rs.response.data), function (k, v) {
 
-                console.log(v);
+                // console.log(v);
                 
-                var count = 40;
-                var product_slug = v.product_slug;
-                var clean = product_slug.replace(/-/g, " ");
-                // var buyer_id = v.buyer;
+                var slug = v.slug;
                 var message = v.message;
-                var date_created = v.date_created;
+                var upload = v.upload;
+                var date_added = v.date_added;
+                var first_name = v.first_name;
+                var last_name = v.last_name;
+                // var fullname = first_name +' ' +last_name;
+                
+                var user_infos = user_info();
+                var lastname = user_infos.last_name;
+                var firstname = user_infos.first_name;
 
-                var result = clean.slice(0, count) + (clean.length > count ? "..." : "");
+                if (first_name === firstname && last_name === lastname) {
+                    var fullname = 'Me';
+                } else {
+                    var fullname = first_name +' ' +last_name;
+                }
 
                 function getDateFormat(date) {
                     var d = new Date(date),
@@ -47,11 +61,17 @@ $(document).ready(function () {
                     return [day, month, year].join(' ');
                 };
 
-                var fomatdate = getDateFormat(date_created);
+                var fomatdate = getDateFormat(date_added);
     
-              rowbody = '<a href="/unique_message/' + id + '"><div class="chat_list"><div class="chat_people"><div class="chat_img"> </div><div class="chat_ib"><h5>' + result +'<span class="chat_date">' + fomatdate +'</span></h5><p>' + message +'</p></div></div></div></a>';
+              
+
+              if (upload === '') {
+                rowbody = '<div class="media msg "><div class="media-body"><small class="pull-right time"><i class="fa fa-clock-o"></i>' + fomatdate +'</small><h5 class="media-heading">' + fullname +'</h5><p class="col-lg-10">' + message +'</p></div></div>';
+              } else {
+                rowbody = '<div class="media msg "><div class="media-body"><small class="pull-right time"><i class="fa fa-clock-o"></i>' + fomatdate +'</small><h5 class="media-heading">' + fullname +'</h5><p class="col-lg-10">' + message +'</p><img class="media-object img-fluid" alt="" width="55" src="/public/static/evidence/' + upload +'"></div></div>';
+              }
                 
-              $("#chatnotification").append(rowbody);
+              $("#disputemsg").append(rowbody);
     
             });
           }
@@ -67,7 +87,6 @@ $(document).ready(function () {
           //   $('#form-div').hide();
           //   $('#success-card').slideDown("slow");
           //   $('#form')[0].reset();
-  
   
         }
   

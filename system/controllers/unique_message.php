@@ -5,6 +5,8 @@ class Unique_message extends Controller
     public function index($slug)
     {
 
+        setcookie("slug", $slug, time() + 13600, "/");
+
         $param = new stdClass();
         $object = new stdClass();
 

@@ -2,9 +2,9 @@
     class Dispute extends Controller
     {
     
-        public function index()
+        public function index($slug)
         {
-            $this->view('home/dispute');
+            $this->view('home/dispute', $slug);
         }
     
     }

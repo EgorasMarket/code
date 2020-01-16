@@ -168,6 +168,8 @@ p {
   display: none;
 }
 
+
+
 .breadcrumb-area {
   padding: 30px 0;
   background-color: #f3f3f3;
@@ -486,7 +488,7 @@ p {
 
 .btn-orange {
   background: #e96405 !important;
-  color: white !important;
+  color: black !important;
 }
 
 .btn-orange:hover {
@@ -942,7 +944,7 @@ a[aria-expanded="true"] {
 .chat_ib {
   float: left;
   padding: 0 0 0 15px;
-  width: 88%;
+  width: 100%;
 }
 
 .chat_people {

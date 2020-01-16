@@ -19,20 +19,25 @@
 
             <div class="row">
                 <div class="col-md-12 mt-4">
-                    <div class="send-wrap ">
-                        <textarea class="form-control send-message" rows="3" placeholder="Write your message here..."></textarea>
-                    </div>
-                    <div class="btn-panel mb-3">
-                        <a href="" class=" col-lg-3 btn send-message-btn " role="button"><i class="fas fa-cloud-upload-alt"></i> Add Files</a>
-                        <a href="" class=" col-lg-4 text-right btn send-message-btn right" role="button"><i class="fa fa-plus"></i> Send Message</a>
-                    </div>
+                    <form id="form">
+                        <div class="send-wrap ">
+                            <input type="hidden" id="slug" name="slug" value="<?php echo $data; ?>">
+                            <textarea class="form-control send-message" id="disputeMessage"  name="disputeMessage" rows="3" placeholder="Write your message here..."></textarea>
+                        </div>
+                        <div class="btn-panel mb-3">
+                            <!-- <a href="" class=" col-lg-3 btn send-message-btn " role="button"><i class="fas fa-cloud-upload-alt"></i> Add Files</a> -->
+                            <input type="file" name="file" class="form-control-file col-lg-3 btn" id="img">
+                            <button class=" col-lg-6 btn send-message-btn " type="submit"><i class="fa fa-plus"></i> Send Message</button>
+                            <!-- <button class=" col-lg-4 text-right btn send-message-btn right" role="button"><i class="fa fa-plus"></i> Send Message</button> -->
+                        </div>
+                    </form>
                     <div class="row ">
-                        <div class="col-md-6">
+                        <!-- <div class="col-md-6">
                             <button type="button" class="btn btn-outline-orange btn-block">Report Transaction</button>
                         </div>
                         <div class="col-md-6">
                             <button type="button" class="btn btn-outline-orange btn-block">Cancel Transaction</button>
-                        </div>
+                        </div> -->
 
                     </div>
                 </div>
@@ -42,58 +47,8 @@
                     <div class="row">
 
                         <div class="message-wrap col-lg-12">
-                            <div class="msg-wrap">
-
-
-                                <div class="media msg ">
-                                    <a class="pull-left" href="#">
-                                        <img class="media-object mt-2 mr-2" data-src="holder.js/64x64" alt="64x64" style="width: 35px; height: 35px;" src="/public/static/assets/company/user.png">
-                                    </a>
-                                    <div class="media-body">
-                                        <small class="pull-right time"><i class="fa fa-clock-o"></i> 12:10am</small>
-                                        <h5 class="media-heading">Naimish Sakhpara</h5>
-                                        <small class="col-lg-10">Location H-2, Ayojan Nagar, Near Gate-3, Near
-                                            Shreyas Crossing Dharnidhar Derasar,
-                                            Paldi, Ahmedabad 380007, Ahmedabad,
-                                            India
-                                            Phone 091 37 669307
-                                            Email aapamdavad.district@gmail.com</small>
-                                    </div>
-                                </div>
-                                <div class="media msg">
-                                    <a class="pull-left" href="#">
-                                        <img class="media-object mt-2 mr-2" data-src="holder.js/64x64" alt="64x64" style="width: 35px; height: 35px;" src="/public/static/assets/company/user.png">
-                                    </a>
-                                    <div class="media-body">
-                                        <small class="pull-right time"><i class="fa fa-clock-o"></i> 12:10am</small>
-
-                                        <h5 class="media-heading">Naimish Sakhpara</h5>
-                                        <small class="col-lg-10">Arnab Goswami: "Some people close to Congress Party and close to the government had a #secret #meeting in a farmhouse in Maharashtra in which Anna Hazare send some representatives and they had a meeting in the discussed how to go about this all fast and how eventually this will end."</small>
-                                    </div>
-                                </div>
-                                <div class="media msg">
-                                    <a class="pull-left" href="#">
-                                        <img class="media-object mt-2 mr-2" data-src="holder.js/64x64" alt="64x64" style="width: 35px; height: 35px;" src="/public/static/assets/company/user.png">
-                                    </a>
-                                    <div class="media-body">
-                                        <small class="pull-right time"><i class="fa fa-clock-o"></i> 12:10am</small>
-
-                                        <h5 class="media-heading">Naimish Sakhpara</h5>
-                                        <small class="col-lg-10">Arnab Goswami: "Some people close to Congress Party and close to the government had a #secret #meeting in a farmhouse in Maharashtra in which Anna Hazare send some representatives and they had a meeting in the discussed how to go about this all fast and how eventually this will end."</small>
-                                    </div>
-                                </div>
-
-                                <div class="media msg">
-                                    <a class="pull-left" href="#">
-                                        <img class="media-object mt-2 mr-2" data-src="holder.js/64x64" alt="64x64" style="width: 35px; height: 35px;" src="/public/static/assets/company/user.png">
-                                    </a>
-                                    <div class="media-body">
-                                        <small class="pull-right time"><i class="fa fa-clock-o"></i> 12:10am</small>
-                                        <h5 class="media-heading">Naimish Sakhpara</h5>
-
-                                        <small class="col-lg-10">Arnab Goswami: "Some people close to Congress Party and close to the government had a #secret #meeting in a farmhouse in Maharashtra in which Anna Hazare send some representatives and they had a meeting in the discussed how to go about this all fast and how eventually this will end."</small>
-                                    </div>
-                                </div>
+                            <div class="msg-wrap" id="disputemsg">
+                                
                             </div>
                         </div>
                     </div>
@@ -106,6 +61,9 @@
 
 <?php require_once("public/page-parts/site-footer.php") ?>
 <script src="/public/static/js/account-details.js"></script>
+<script src="/public/static/js/lacalstorage.js"></script>
+<script src="/public/static/js/submit-dispute.js"></script>
+<script src="/public/static/js/supply-dispute.js"></script>
 
 <script>
     $(document).ready(function() {

@@ -36,14 +36,9 @@ $("#reply-message").on('submit',(function(e) {
                 var now = '<div class="21/12/2019" style="margin: 26px 0 26px;overflow:hidden;"><div class="sent_msg"><p>' + bla +'</p><span class="time_date"> Now</span></div></div>';
 
                 $("#msg_history").append(now);
-                // $("#reply-message")[0].reset();
+                now.show('slow');
+                // $("#message1").attr('value', '');
 
-                function explode(){
-                    $("#txtModalClose").trigger("click");
-                    $(".close").trigger("click");
-                }
-                setTimeout(explode, 3000);
-                
                 
             }	
         

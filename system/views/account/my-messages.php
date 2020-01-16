@@ -53,14 +53,23 @@
               $product_slug = $value['product_slug'];
               $message = $value['message'];
               $date_created = $value['date_created'];
-              $length = 30;
+              $formatDate = date("D, d M Y", strtotime($date_created));
+              $length1 = 50;
+              $length2 = 80;
               
-              if(strlen($product_slug)>=$length)
+              if(strlen($product_slug)>=$length1)
               {
-                $slug=substr($product_slug,0,$length) . '...';
-                // echo $product_slug;
+                $slug=substr($product_slug,0,$length1) . '...';
               } else {
                 $slug = $product_slug;
+              }
+              $new = str_replace("-", " ", $slug);
+
+              if(strlen($message)>=$length2)
+              {
+                $msg=substr($message,0,$length2) . '...';
+              } else {
+                $msg = $message;
               }
 
 
@@ -69,11 +78,11 @@
               <div class="chat_list">
                   <div class="chat_people">
                       <div class="chat_img"> 
-                          <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> 
+                          <!-- <img class="img-fluid" src="https://ptetutorials.com/images/user-profile.png" alt="sunil">  -->
                       </div>
                       <div class="chat_ib">
-                          <h5><?php echo $slug ?><span class="chat_date"><?php echo $date_created ?></span></h5>
-                          <p><?php echo $message ?></p>
+                          <h5 class="text-capitalize"><?php echo $new ?><span class="chat_date"><?php echo $formatDate ?></span></h5>
+                          <p><?php echo $msg ?></p>
                       </div>
                   </div>
               </div>

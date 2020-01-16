@@ -28,7 +28,19 @@
             <div class="bg-white products-spec mb-3">
             <div class="messaging">
       <div class="inbox_msg">
-        
+        <div class="p-2 border-bottom">
+          <?php  
+            if (isset($_COOKIE['slug'])) {
+              $slug = $_COOKIE['slug'];
+            }
+
+            $product = str_replace(".html","", $slug);
+            $header = str_replace("-"," ", $product);
+            // echo $product;
+          ?>
+          <p class="text-muted">Product:</p>
+          <a href="/phone_item/<?php echo $slug; ?>"><h6 class="text-capitalize"><?php echo $header; ?></h6></a>
+        </div>
         <div class="mesgs">
           <div id="msg_history" class="msg_history list">
               <?php 
@@ -42,7 +54,8 @@
                   $product_slug = $value['product_slug'];
                   $message = $value['message'];
                   $date_created = $value['date_created'];
-                  // echo $date_created;
+                  // echo $product_slug;
+                  $formatDate = date("D, d M Y", strtotime($date_created));
 
                   if ($walletId == $seller) {
 
@@ -50,7 +63,7 @@
                 <div class="21/12/2019" style="margin: 26px 0 26px;overflow:hidden;">
                   <div class="sent_msg">
                     <p><?php echo $message; ?></p>
-                    <span class="time_date"> <?php echo $date_created; ?></span> </div>
+                    <span class="time_date"> <?php echo $formatDate; ?></span> </div>
                 </div>
               <?php
               
@@ -61,7 +74,7 @@
                   <div class="received_msg">
                     <div class="received_withd_msg">
                       <p><?php echo $message; ?></p>
-                      <span class="time_date"> <?php echo $date_created; ?></span></div>
+                      <span class="time_date"> <?php echo $formatDate; ?></span></div>
                   </div>
                 </div>
               <?php
@@ -78,7 +91,7 @@
                     <input type="hidden" name="product_slug" value="<?php echo $product_slug; ?>" />
                     <input type="hidden" name="seller" value="<?php echo $seller; ?>" />
                     <input type="text" name="message" id="message1" class="write_msg pr-5" placeholder="Type a message" />
-                    <button class="msg_send_btn" type="submit"><i class="far fa-paper-plane" aria-hidden="true"></i></button>
+                    <button id="replyb" class="msg_send_btn" type="submit"><i class="far fa-paper-plane" aria-hidden="true"></i></button>
                 </form>
             </div>
           </div>
@@ -99,3 +112,23 @@
 <?php require_once("public/page-parts/site-footer.php") ?>
 <!-- <script src="/public/static/js/sort-messages.js"></script> -->
 <script src="/public/static/js/reply-message.js"></script>
+
+<script>
+  $(document).ready(function () {
+    $("#msg_history").animate({ 
+      scrollTop: $( 
+        '#msg_history').get(0).scrollHeight 
+    }, 2000); 
+    
+    $("#replyb").on('click',(function () {
+      $("#msg_history").animate({ 
+        scrollTop: $( 
+          '#msg_history').get(0).scrollHeight 
+      }, 2000); 
+      function explode(){
+        $("#message1").val('');
+      }
+      setTimeout(explode, 2000);
+    }))
+  });
+</script>

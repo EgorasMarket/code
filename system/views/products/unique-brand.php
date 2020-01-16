@@ -1,59 +1,53 @@
 <?php require_once("public/page-parts/site-header.php") ?>
 <?php require_once("public/page-parts/sidebar.php") ?>
 <?php require_once("public/page-parts/navbar.php") ?>
+
+<style>
+  .card-product:after {
+    content: "";
+    display: table;
+    clear: both;
+    visibility: hidden; }
+  .card-product .price-new, .card-product .price {
+    margin-right: 5px; }
+  .card-product .price-old {
+    color: #999; }
+  .card-product .img-wrap {
+    border-radius: 3px 3px 0 0;
+    overflow: hidden;
+    position: relative;
+    height: 220px;
+    text-align: center; }
+    .card-product .img-wrap img {
+      max-height: 100%;
+      max-width: 100%;
+      object-fit: cover; }
+      
+      .card-product .info-wrap {
+    overflow: hidden;
+    padding: 15px;
+    border-top: 1px solid #eee; }
+  .card-product .action-wrap {
+    padding-top: 4px;
+    margin-top: 4px; }
+  .card-product .bottom-wrap {
+    padding: 15px;
+    border-top: 1px solid #eee; }
+  .card-product .title {
+    margin-top: 0; }
+</style>
+
 <div class="container mt-2" id="topBanner">
   <div class="row">
     <div class="col-md-12 reset-padding " style="">
       <div class="row mt-3">
-        <div class="col-md-3 desktop-side-link">
-            <div class="bg-white p-3 products-spec">
-                <div class="form-group">
-                    <label for="exampleInputEmail1" class="bold">Brand</label>
-                    <select class="form-control">
-                    <option>Select Brand</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1" class="bold">Model</label>
-                    <select class="form-control">
-                    <option>Select Model</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1" class="bold">Condition</label>
-                    <select class="form-control">
-                    <option>Select Condition</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1" class="bold">RAM</label>
-                    <select class="form-control">
-                    <option>Select RAM</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1" class="bold">Storage Capacity</label>
-                    <select class="form-control">
-                    <option>Select Storage Capacity</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1" class="bold">Screen Size</label>
-                    <select class="form-control">
-                    <option>Select Screen Size</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1" class="bold">Colour</label>
-                    <select class="form-control">
-                    <option>Select Colour</option>
-                    </select>
-                </div>
-          </div>
-        </div>
-        <div class="col-md-9 reset-padding">
+        
+        <div class="col-md-12 reset-padding">
           <div class="col-sm-12 ">
             <ul class="list-group">
+                <div class="row">
+                    
+                
 <?php
 $rs = json_decode($data['response']['data'], true);
 
@@ -65,7 +59,8 @@ $rs = json_decode($data['response']['data'], true);
 
 if ($rs == NULL) {
 ?>
-                <li class="list-group-item mb-4">
+                <div class="col-md-12">
+                <li style="border:none;" class="list-group-item mb-4">
                     
                         <div class="media align-items-lg-center flex-column flex-lg-row">
                             <div class="media-body order-2 order-lg-1">
@@ -77,6 +72,7 @@ if ($rs == NULL) {
                         </div>
                     
                 </li> 
+                </div
 <?php
 } else {
     
@@ -107,30 +103,24 @@ if ($rs == NULL) {
         $phone_name = $brand." ".$model;
 
 ?>
-
-                <li class="list-group-item mb-4 products-items">
-                    
-                    <a href="/phone_item/<?php echo $slug; ?>">
-                        <div class="media align-items-lg-center flex-column flex-lg-row">
-                            <img src="/public/static/phones/<?php echo $img; ?>" alt="Generic placeholder image" width="100" class="mr-3 order-lg-1">
-                            <div class="media-body order-2 order-lg-1">
-                                <h5 class="mt-0 font-weight-bold mb-2"><?php echo $phone_name; ?> (<?php echo $colour.", ".$storage_capacity; ?>)</h5>
-                                <p class="font-italic text-muted mb-0 "><?php echo $storage_capacity; ?> ROM | <?php echo $screen_size; ?> Display <?php echo $main_camera; ?> Rear Camera | <?php echo $selfie_camera; ?> Front Camera A12 Bionic Chip Processor</p>
-                                <div class="d-flex align-items-center justify-content-between mt-1">
-                                    <h6 class="font-weight-bold my-2">&#8358;<?php echo $price ?></h6>
-                                    <!-- <ul class="list-inline small">
-                                        <li class="list-inline-item m-0"><i class="fa fa-star text-warning"></i></li>
-                                        <li class="list-inline-item m-0"><i class="fa fa-star text-warning"></i></li>
-                                        <li class="list-inline-item m-0"><i class="fa fa-star text-warning"></i></li>
-                                        <li class="list-inline-item m-0"><i class="fa fa-star text-warning"></i></li>
-                                        <li class="list-inline-item m-0"><i class="fa fa-star-o text-gray"></i></li>
-                                    </ul> -->
-                                </div>
-                            </div>
-                        </div>
-                    </a> 
-                    
-                </li> 
+            <div class="col-md-4">
+                <figure class="card card-product">
+                    <div class="img-wrap"> 
+                        <img src="/public/static/phones/<?php echo $img; ?>">
+                        <!-- <a class="btn-overlay" href="#"><i class="fa fa-search-plus"></i> Quick view</a> -->
+                    </div>
+                    <figcaption class="info-wrap">
+                        <h6 class="title text-dots"><a href="#"><?php echo $phone_name ?></a></h6>
+                        <div class="action-wrap">
+                            <a href="/phone_item/<?php echo $slug; ?>" class="btn btn-orange btn-sm float-right"> Sell Now <i class="fas fa-arrow-right"></i></a>
+                            <div class="price-wrap h5">
+                                <span class="price-new">&#8358;<?php echo $price ?></span>
+                                <!-- <del class="price-old">$1980</del> -->
+                            </div> <!-- price-wrap.// -->
+                        </div> <!-- action-wrap -->
+                    </figcaption>
+                </figure>
+            </div>
 
 <?php
      
@@ -139,11 +129,12 @@ if ($rs == NULL) {
 }
 ?>
 
+            </div>
             </ul> 
           </div>
         </div>
       </div>
-      <nav aria-label="Page navigation">
+      <!-- <nav aria-label="Page navigation">
         <ul class="pagination justify-content-center mb-5">
             <li class="page-item">
             <a class="page-link" href="#" tabindex="-1">Previous</a>
@@ -157,7 +148,7 @@ if ($rs == NULL) {
             <a class="page-link" href="#">Next</a>
             </li>
         </ul>
-        </nav>
+        </nav> -->
     </div>
   </div>
 </div>

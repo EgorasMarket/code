@@ -109,7 +109,7 @@
                                 <div class="row">
                                     <div class="col-md-6  col-sm-12">
                                         <div class="product-details-large" id="ProductPhoto">
-                                            <img id="ProductPhotoImg" class="product-zoom" data-image-id="" alt="" data-zoom-image="/public/static/phones/<?php echo $img; ?>" src="/public/static/phones/<?php echo $img; ?>">
+                                            <img id="ProductPhotoImg" class="product-zoom img-fluid" data-image-id="" alt="" data-zoom-image="/public/static/phones/<?php echo $img; ?>" src="/public/static/phones/<?php echo $img; ?>">
 
                                         </div>
                                         <div id="ProductThumbs" class="product-thumbnail owl-carousel">
